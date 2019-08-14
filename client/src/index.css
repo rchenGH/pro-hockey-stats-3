@@ -1,0 +1,108 @@
+body {
+    margin: 0;
+    padding: 0;
+    font-family: 'Lato', sans-serif;
+  }
+  
+  .container{
+    display:block;
+    flex: 100%;
+    padding-right: auto;
+    padding-left: auto;
+  }
+  
+  .row{
+    display: flex;
+    flex: 100%;
+    flex-wrap: wrap;
+    margin: 0;
+  }
+  
+  .column-1{
+    display: inline;
+    flex: calc((95%/12));
+    padding-left: calc(5%/4);
+    padding-right: calc(5%/4);
+  }
+  .column-2{
+    display: inline;
+    flex: calc((95%/12)*2);
+    padding-left: calc(5%/4);
+    padding-right: calc(5%/4);
+  }
+  .column-3{
+    display: inline;
+    flex: calc((95%/12)*3);
+    padding-left: calc(5%/4);
+    padding-right: calc(5%/4);
+  }
+  .column-4{
+    display: inline;
+    flex: calc((95%/12)*4);
+    padding-left: calc(5%/4);
+    padding-right: calc(5%/4);
+  }
+  .column-5{
+    display: inline;
+    flex: calc((95%/12)*5);
+    padding-left: calc(5%/4);
+    padding-right: calc(5%/4);
+  }
+  .column-6{
+    display: inline;
+    flex: calc((95%/12)*6);
+    padding-left: calc(5%/4);
+    padding-right: calc(5%/4);
+  }
+  .column-7{
+    display: inline;
+    flex: calc((95%/12)*7);
+    padding-left: calc(5%/4);
+    padding-right: calc(5%/4);
+  }
+  .column-8{
+    display: inline;
+    flex: calc((95%/12)*8);
+    padding-left: calc(5%/4);
+    padding-right: calc(5%/4);
+  }
+  .column-9{
+    display: inline;
+    flex: calc((95%/12)*9);
+    padding-left: calc(5%/4);
+    padding-right: calc(5%/4);
+  }
+  .column-10{
+    display: inline;
+    flex: calc((95%/12)*10);
+    padding-left: calc(5%/4);
+    padding-right: calc(5%/4);
+  }
+  .column-11{
+    display: inline;
+    flex: calc((95%/12)*11);
+    padding-left: calc(5%/4);
+    padding-right: calc(5%/4);
+  }
+  .column-12{
+    display: inline;
+    flex: 95%;
+    padding-left: calc(5%/4);
+    padding-right: calc(5%/4);
+  }
+  
+  
+  
+  @media only screen and (max-flex: 768px) {
+      /* For mobile phones: */
+      [class*="column-"] {
+          flex: 100%;
+      }
+  
+  }
+  @media only screen and (max-width: 768px) {
+    .column-body{
+      padding-top: 50px;
+    }
+  }
+  

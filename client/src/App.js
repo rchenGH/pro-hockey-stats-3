@@ -1,17 +1,38 @@
-import React, {Fragment } from 'react';
-import Navigation from './components/layout/navigation/Navigation';
+import React, {Component} from 'react';
+import NavigationBar from './components/layout/navigation/Navigation';
+import './components/layout/background/background.css';
 import './App.css';
 
 import {
   BrowserRouter as Router,
-  Route,
-  Link,
-  Switch
 } from 'react-router-dom'
 
-const App = () => 
-    <Router>
-      <Navigation/>
-    </Router>
+class App extends Component {
+  constructor(props){
+    super(props)
+
+    this.state = {
+      portfolio: {
+        home: {
+          backend : null
+        }
+      },
+    }
+  }
+
+  render(){
+    return (
+      <Router>
+        <div className="App hockey-background">
+          <div className="routes">
+            <NavigationBar/>
+          </div>
+        </div>
+      </Router>
+    )
+  }
+
+}
+
 
 export default App;

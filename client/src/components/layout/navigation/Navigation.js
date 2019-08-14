@@ -1,83 +1,59 @@
 import React, {Component} from 'react';
-import NavStyle from './navigation.css'
-
-import HockeyLogo from '../../logo/Logo'
+import './navigation.css'
 import {
-  Link,
-} from 'react-router-dom'
-import {
-  Collapse,
-  Navbar,
-  NavbarToggler,
-  NavbarBrand,
-  Nav,
-  NavItem,
-  NavLink,
-  UncontrolledDropdown,
-  DropdownToggle,
-  DropdownMenu,
-  DropdownItem } from 'reactstrap';
+  Link
+} from 'react-router-dom';
 
-// import SignInPage from '../SignIn/SignInPage'
+import logo from '../background/logo.png'
 
-
-
-class Navigation extends Component{
-  constructor(props) {
-    super(props);
-
-    this.state={
-      user: {}
-    }
-
-    // this.signOut = this.signOut.bind(this);
-    this.toggle = this.toggle.bind(this);
+class NavigationBar extends Component {
+  constructor() {
+    super();
 
     this.state = {
-      isOpen: false
-    };
-
-
-    // this.signOut = this.signOut.bind(this);
-  }
-  toggle() {
-    this.setState({
-      isOpen: !this.state.isOpen,
-
-    });
+      showMenu: false
+    }
   }
 
+  showMenu = (event) => {
+    event.preventDefault();
+    this.setState(
+      {showMenu: true},
+      () => {
+        document.addEventListener('click', this.closeMenu)
+      });
+  }
 
+  closeMenu(event){
+    if(!this.dropdownMenu.contains(event.target)){
+      this.setState(
+        {showMenu: false},
+        () => {
+          document.removeEventListener('click', this.closeMenu);
+        }
+      )
+    }
+  }
 
+  render(){
+    return(
+      <div>
+        <nav className="navigation-expanded">
+          <ul className="navigation-expanded-list">
+            <Link to="/home">
+              <img src={logo} className="logo-expanded"/>
+            </Link>
+          </ul>
+        </nav>
 
-  render() {
-    const { user , onSignOut = () => {}} = this.props;
-    return (
-      <div className="nav-div">
-        <Navbar light expand="md" fixed="top">
-          <HockeyLogo/>
-          <NavbarToggler onClick={this.toggle} className="clearfix"/>
-          <Collapse isOpen={this.state.isOpen} navbar>
-            <Nav className="ml-auto" navbar>
-              <NavItem className="nav-list-item">
-                <Link to="/home" className="nav-link">HOME</Link>
-              </NavItem>
-              <NavItem className="nav-list-item">
-                <Link to="/players" className="nav-link">PLAYERS</Link>
-              </NavItem>
-              {/* { user
-                ? <span className="wrap"><span className='greeting'>Hello, {this.props.user.first_name}</span>
-                  <button className="signout" onClick={onSignOut}>SIGN OUT</button></span>
-                : <Link to="/sign_in" className='signin'>SIGN IN</Link>
-              } */}
-            </Nav>
-          </Collapse>
+        <nav className="navigation-collapsed">
 
-        </Navbar>
-
+        </nav>
       </div>
-    );
+    )
   }
+    
+  
 }
 
-export default Navigation
+export default NavigationBar;
