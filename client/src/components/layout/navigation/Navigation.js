@@ -4,7 +4,7 @@ import {
   Link
 } from 'react-router-dom';
 
-import logo from '../background/logo.png'
+import logo from '../background/Logo.png'
 
 class NavigationBar extends Component {
   constructor() {

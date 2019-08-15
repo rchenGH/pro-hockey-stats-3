@@ -1,5 +1,6 @@
 import React, {Component} from 'react';
 import NavigationBar from './components/layout/navigation/Navigation';
+import Footer from './components/layout/footer/Footer'
 import './components/layout/background/background.css';
 import './App.css';
 
@@ -23,11 +24,15 @@ class App extends Component {
   render(){
     return (
       <Router>
-        <div className="App hockey-background">
+        <div className="App hockey-background"
+            style={{backgroundColor: "rgba(59,59,59,1)", paddingTop:'5px', width: '100vw', paddingBottom:'50px'}}
+        >
           <div className="routes">
             <NavigationBar/>
           </div>
         </div>
+        <Footer/>
+
       </Router>
     )
   }

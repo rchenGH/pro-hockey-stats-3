@@ -1,0 +1,42 @@
+/* .footer-nav{
+    margin-top: 5vh;
+  } */
+  .site-info{
+    display:block;
+    background-color: rgba(150,150,150,1);
+    background-color: rgba(200, 80, 30, 1);
+    height: 50px;
+    padding-top: 15px;
+    /* margin-top: 40px; */
+  }
+  
+  .copyright-column, .author-column{
+    color: rgba(59, 59, 59, 1);
+    font-family: helvetica;
+    font-weight: lighter;
+    font-size: 14px;
+  }
+  
+  .copyright-column{
+    float: left;
+    padding-left: 10px;
+  }
+  
+  .copyright-column>a{
+    padding: 15px;
+    color: rgba(59, 59, 59, 1)
+  }
+  
+  .author-column{
+    float: right;
+    padding-right: 10px;
+  }
+  
+  .author-column a{
+    color: rgba(255, 200, 30, 1);
+  }
+  
+  .author{
+    text-align: right;
+  }
+  
