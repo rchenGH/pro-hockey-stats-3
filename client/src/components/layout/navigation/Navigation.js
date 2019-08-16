@@ -1,8 +1,6 @@
 import React, {Component} from 'react';
 import './navigation.css'
-import {
-  Link
-} from 'react-router-dom';
+import { Link } from 'react-router-dom';
 
 import logo from '../background/Logo.png'
 
@@ -43,11 +41,41 @@ class NavigationBar extends Component {
             <Link to="/home">
               <img src={logo} className="logo-expanded"/>
             </Link>
+
+            <Link to="/home">
+              <li className="navigation-expanded-list-item">
+                HOME
+              </li>
+            </Link>
           </ul>
         </nav>
 
         <nav className="navigation-collapsed">
+          <Link to="/home">
+            <img src={logo} className="logo-collapsed"/>
+          </Link>
+          <button className="navigation-button" onClick={this.showMenu}>
+            MENU
+          </button>
+            {
+              this.state.showMenu ?
+              (
+                <div className="navigation-menu"
+                  ref={(element) => {this.dropdownMenu = element;}}
+                >
+                  <ul className="navigation-collapsed-list">
 
+                    <Link to="/home">
+                      <li className="navigation-collapsed-list-item">
+                        HOME
+                      </li>
+                    </Link>
+
+                  </ul>
+                </div>
+              ) :
+              ( null)
+            }
         </nav>
       </div>
     )

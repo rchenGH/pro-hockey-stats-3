@@ -1,0 +1,75 @@
+
+
+.about-me{
+    color: rgba(255,255,255, 1);
+    letter-spacing: 5px;
+    font-size: 40px;
+    padding-top: 30px;
+    margin-top: 50px;
+    text-align: center;
+    font-weight: 500;
+    animation-name:about-me;
+    animation-fill-mode: forwards;
+    animation-play-state: running;
+    animation-duration: 1.5s;
+  }
+  
+  @keyframes about-me{
+    0% {transform: translateY(50px);}
+    100% {transform: translate(0px)}
+  }
+  
+  #about-text{
+    text-align: justify;
+    margin-left: auto;
+    margin-right: auto;
+    font-size: 18px;
+    letter-spacing: 2px;
+    color: rgba(255,255,255,1);
+    font-weight: 300;
+    max-width: 700px;
+    padding-left: 3%;
+    padding-right: 3%;
+    animation-name: about-text;
+    animation-fill-mode: forwards;
+    animation-play-state: running;
+    animation-duration: 1.5s;
+  }
+  
+  @keyframes about-text{
+    0% {
+      transform: translateX(-200px);
+      opacity: 0;}
+  
+    30% {
+      opacity: 0;}
+  
+    100% {
+      transform: translate(0px);
+    }
+  }
+  
+  .about-hr{
+    height: 2px;
+    background: linear-gradient(to right, rgba(255,255,255,0), rgba(255,255,255,1), rgba(255,255,255,0));
+    margin-top: 50px;
+    margin-bottom: 50px;
+    border: none;
+    animation-name: about-hr;
+    animation-fill-mode: forwards;
+    animation-play-state: running;
+    animation-duration: 1.5s;
+  }
+  
+  @keyframes about-hr{
+    0% {width: 0px;}
+    100% {width: 200px;}
+  }
+  
+  
+  @media only screen and (max-width: 768px) {
+    #about-text{
+      font-weight: 300;
+    }
+  }
+  
