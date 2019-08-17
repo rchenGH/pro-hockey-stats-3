@@ -7,6 +7,9 @@ import Footer from './components/layout/footer/Footer';
 import './components/layout/background/background.css';
 import './App.css';
 
+// Redux
+import { Provider } from 'react-redux';
+import store from './store';
 
 class App extends Component {
   constructor(props){
@@ -22,30 +25,33 @@ class App extends Component {
 
   render(){
     return (
-      <Router>
-        <div className="App hockey-background"
-            style={{backgroundColor: "rgba(59,59,59,1)", paddingTop:'5px', width: '100vw', paddingBottom:'50px'}}
-            >
-            <div className="routes">
-              <NavigationBar/>
-              <Route exact
-                path='/'
-                component={Home}
-              />
-              <Route 
-                path='/home'
-                render={(RouteProps) => (
-                  <Home {...RouteProps}  />
-                )}
-              />
-              <Route path='/about'
-                component={About}
-              />
+      // <Provider store={ store }>
+        <Router>
+          <div className="App hockey-background"
+              style={{backgroundColor: "rgba(59,59,59,1)", paddingTop:'5px', width: '100vw', paddingBottom:'50px'}}
+              >
+              <div className="routes">
+                <NavigationBar/>
+                <Route exact
+                  path='/'
+                  component={Home}
+                />
+                <Route 
+                  path='/home'
+                  render={(RouteProps) => (
+                    <Home {...RouteProps}  />
+                  )}
+                />
+                <Route path='/about'
+                  component={About}
+                />
+            </div>
           </div>
-        </div>
-        <Footer/>
+          <Footer/>
 
-      </Router>
+        </Router>
+      // </Provider>
+
     )
   }
 
