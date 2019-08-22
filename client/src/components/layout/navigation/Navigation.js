@@ -22,7 +22,7 @@ class NavigationBar extends Component {
       });
   }
 
-  closeMenu(event){
+  closeMenu = (event) => {
     if(!this.dropdownMenu.contains(event.target)){
       this.setState(
         {showMenu: false},
@@ -41,12 +41,23 @@ class NavigationBar extends Component {
             <Link to="/home">
               <img src={logo} className="logo-expanded"/>
             </Link>
-
+            <Link to="/login">
+              <li className="navigation-expanded-list-item">
+                LOGIN
+              </li>
+            </Link>
+            <Link to="/register">
+              <li className="navigation-expanded-list-item">
+                REGISTER
+              </li>
+            </Link>
             <Link to="/home">
               <li className="navigation-expanded-list-item">
                 HOME
               </li>
             </Link>
+
+
           </ul>
         </nav>
 
@@ -64,13 +75,21 @@ class NavigationBar extends Component {
                   ref={(element) => {this.dropdownMenu = element;}}
                 >
                   <ul className="navigation-collapsed-list">
-
-                    <Link to="/home">
+                  <Link to="/home">
                       <li className="navigation-collapsed-list-item">
                         HOME
                       </li>
                     </Link>
-
+                    <Link to="/register">
+                      <li className="navigation-collapsed-list-item">
+                        REGISTER
+                      </li>
+                    </Link>
+                    <Link to="/login">
+                      <li className="navigation-collapsed-list-item">
+                        LOGIN
+                      </li>
+                    </Link>
                   </ul>
                 </div>
               ) :

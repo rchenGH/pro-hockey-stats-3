@@ -14,6 +14,9 @@ class Home extends Component {
     return(
 
       <div className='home top-10-header-row'>
+        <div>
+          <p>Hello {this.props.data}</p>
+        </div>
         {/* <div className="player-background" style={{backgroundColor: 'rgba(59,59,59,1)'}}> */}
 
           {/* <div className="top-10-header-div">

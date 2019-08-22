@@ -1,7 +1,9 @@
 import React, {Component} from 'react';
 import NavigationBar from './components/layout/navigation/Navigation';
-import {BrowserRouter as Router, Route } from 'react-router-dom'
+import {BrowserRouter as Router, Route, Switch } from 'react-router-dom'
 import Home from './components/home/Home';
+import Register from './components/auth/Register';
+import Login from './components/auth/Login';
 import About from './components/about/About'
 import Footer from './components/layout/footer/Footer';
 import './components/layout/background/background.css';
@@ -14,13 +16,7 @@ import store from './store';
 class App extends Component {
   constructor(props){
     super(props)
-    this.state = {
-      portfolio: {
-        home: {
-          backend: null
-        }
-      },
-    }
+    this.state = { data: null }
   }
 
   render(){
@@ -32,19 +28,31 @@ class App extends Component {
               >
               <div className="routes">
                 <NavigationBar/>
-                <Route exact
-                  path='/'
-                  component={Home}
-                />
-                <Route 
-                  path='/home'
-                  render={(RouteProps) => (
-                    <Home {...RouteProps}  />
-                  )}
-                />
-                <Route path='/about'
-                  component={About}
-                />
+                <Switch>
+                  <Route exact
+                    path='/'
+                    component={Home}
+                  />
+                  <Route 
+                    exact 
+                    path='/home'
+                    component={() => <Home data={this.state.data}/>}
+                  />
+                  <Route 
+                    exact
+                    path='/register'
+                    component={Register}
+                  />
+                  <Route 
+                    exact
+                    path='/login'
+                    component={Login}
+                  />
+                  <Route path='/about'
+                    component={About}
+                  />
+                </Switch>
+
             </div>
           </div>
           <Footer/>
