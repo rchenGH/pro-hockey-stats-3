@@ -1,8 +1,5 @@
 import React, {Fragment, useState} from 'react'
-import {connect} from 'react-redux'; 
-import { link } from 'react-router-dom';
-import { setAlert } from '../../actions/alert';
-import propTypes from 'prop-types';
+import { Link } from 'react-router-dom';
 
 const Register = ({ setAlert }) => {
     const [ formData, setFormData ] = useState({
@@ -13,6 +10,7 @@ const Register = ({ setAlert }) => {
     });
 
     const { name, email, password, password2 } = formData;
+
     const onChange = e =>  
         setFormData({ ...formData, [e.target.name]: e.target.value })
 
@@ -21,10 +19,9 @@ const Register = ({ setAlert }) => {
         if(password !== password2){
             console.log('Passwords do not match')
         } else {
-            console.log(formData)
+            console.log('Success')
         }
     }
-
     return (
         <div>
             <h1>Sign Up</h1>
@@ -72,7 +69,7 @@ const Register = ({ setAlert }) => {
                 </div>
                 <input type='submit' value='Register' />>
                 <p>
-                    Already have an account? <a href="login.html">Sign In</a>
+                    Already have an account? <Link to="/login">Sign In</Link>
                 </p>
             </form>
         </div>
