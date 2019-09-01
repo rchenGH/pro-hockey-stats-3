@@ -31,7 +31,7 @@ class App extends Component {
                 <Switch>
                   <Route exact
                     path='/'
-                    component={Home}
+                    component={() => <Home /> }
                   />
                   <Route 
                     exact 
@@ -41,15 +41,15 @@ class App extends Component {
                   <Route 
                     exact
                     path='/register'
-                    component={Register}
+                    component={() => <Register /> }
                   />
                   <Route 
                     exact
                     path='/login'
-                    component={Login}
+                    component={() => <Login /> }
                   />
                   <Route path='/about'
-                    component={About}
+                     component={() => <About /> }
                   />
                 </Switch>
 
