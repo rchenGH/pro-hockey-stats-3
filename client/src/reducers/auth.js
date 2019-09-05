@@ -12,6 +12,7 @@ const initialState = {
 
 export default function(state = initialState, action){
     const { type, payload } = action
+    console.log('local storage in auth reducer ', localStorage )
 
     switch (type) {
         case REGISTER_SUCCESS:

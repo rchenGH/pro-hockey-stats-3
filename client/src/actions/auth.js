@@ -14,12 +14,18 @@ export const register = ({ name, email, password }) => async dispatch => {
 
     const body = JSON.stringify({ name, email, password });
 
+    console.log('body in auth actions ', body)
+
+
     try {
         const res = await axios.post('api/users', body, config);
+        console.log('res in action auth, returns a promise ', res)
         dispatch({
             type: REGISTER_SUCCESS,
             payload: res.data
         })
+
+        
     } catch(err){
         const errors = err.response.data.errors
 

@@ -4,7 +4,8 @@ import {BrowserRouter as Router, Route, Switch } from 'react-router-dom'
 import Home from './components/home/Home';
 import Register from './components/auth/Register';
 import Login from './components/auth/Login';
-import About from './components/about/About'
+import About from './components/about/About';
+import Alert from './components/layout/alert/Alert';
 import Footer from './components/layout/footer/Footer';
 import './components/layout/background/background.css';
 import './App.css';
@@ -21,13 +22,14 @@ class App extends Component {
 
   render(){
     return (
-      // <Provider store={ store }>
+      <Provider store={ store }>
         <Router>
           <div className="App hockey-background"
               style={{backgroundColor: "rgba(59,59,59,1)", paddingTop:'5px', width: '100vw', paddingBottom:'50px'}}
               >
               <div className="routes">
                 <NavigationBar/>
+                <Alert />
                 <Switch>
                   <Route exact
                     path='/'
@@ -58,7 +60,7 @@ class App extends Component {
           <Footer/>
 
         </Router>
-      // </Provider>
+      </Provider>
 
     )
   }
