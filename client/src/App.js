@@ -1,4 +1,5 @@
-import React, {Component} from 'react';
+import React, { useEffect } from 'react';
+import { connect } from 'react-redux';
 import NavigationBar from './components/layout/navigation/Navigation';
 import {BrowserRouter as Router, Route, Switch } from 'react-router-dom'
 import Home from './components/home/Home';
@@ -8,20 +9,35 @@ import About from './components/about/About';
 import Alert from './components/layout/alert/Alert';
 import Footer from './components/layout/footer/Footer';
 import './components/layout/background/background.css';
+import { loadUser } from './actions/auth';
+import setAuthToken from './utils/setAuthToken';
 import './App.css';
 
 // Redux
 import { Provider } from 'react-redux';
 import store from './store';
 
-class App extends Component {
-  constructor(props){
-    super(props)
-    this.state = { data: null }
-  }
+if(localStorage.token){
+  setAuthToken(localStorage.token);
+}
 
-  render(){
-    return (
+// class App extends Component {
+//   constructor(props){
+//     super(props)
+//     this.state = { data: null }
+//   }
+
+//   render(){
+//     return (
+
+const App = () => {
+
+  useEffect(() => {
+    store.dispatch(loadUser());
+  }, []);
+
+
+  return (
       <Provider store={ store }>
         <Router>
           <div className="App hockey-background"
@@ -38,7 +54,7 @@ class App extends Component {
                   <Route 
                     exact 
                     path='/home'
-                    component={() => <Home data={this.state.data}/>}
+                    component={() => <Home />}
                   />
                   <Route 
                     exact
@@ -61,11 +77,13 @@ class App extends Component {
 
         </Router>
       </Provider>
+  )}
 
-    )
-  }
+//     )
+//   }
 
-}
+// }
 
 
-export default App;
+
+export default App
