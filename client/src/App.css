@@ -72,3 +72,7 @@
   .badge-light {
     border: #ccc solid 1px;
   }
+
+  .hide-class{
+    display: none;
+  }

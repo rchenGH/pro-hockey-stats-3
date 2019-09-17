@@ -1,15 +1,23 @@
-import React, {Component} from 'react';
+import React, {Component, Fragment} from 'react';
 import './navigation.css'
 import { Link } from 'react-router-dom';
-
+import { connect } from 'react-redux';
+import PropTypes from 'prop-types';
+import {logout} from '../../../actions/auth';
 import logo from '../background/Logo.png'
 
+const NavBar = ({auth: {isAuthenticated, loading}, }) => {
+
+}
+
 class NavigationBar extends Component {
-  constructor() {
+  
+  constructor({auth}, logout) {
     super();
 
     this.state = {
-      showMenu: false
+      showMenu: false,
+      auth
     }
   }
 
@@ -34,6 +42,34 @@ class NavigationBar extends Component {
   }
 
   render(){
+    const authLinks = (
+      <Fragment>
+        <li>
+          <a onClick={logout} href="#!" >LOGOUT</a>
+        </li>
+      </Fragment>
+    )
+  
+    const guestLinks = (
+      <Fragment>
+        <Link to="/login">
+          <li className="navigation-expanded-list-item">
+            LOGIN
+          </li>
+        </Link>
+        <Link to="/register">
+          <li className="navigation-expanded-list-item">
+            REGISTER
+          </li>
+        </Link>
+        <Link to="/home">
+          <li className="navigation-expanded-list-item">
+            HOME
+          </li>
+        </Link>
+      </Fragment>
+    )
+
     return(
       <div>
         <nav className="navigation-expanded">
@@ -41,23 +77,7 @@ class NavigationBar extends Component {
             <Link to="/home">
               <img src={logo} className="logo-expanded"/>
             </Link>
-            <Link to="/login">
-              <li className="navigation-expanded-list-item">
-                LOGIN
-              </li>
-            </Link>
-            <Link to="/register">
-              <li className="navigation-expanded-list-item">
-                REGISTER
-              </li>
-            </Link>
-            <Link to="/home">
-              <li className="navigation-expanded-list-item">
-                HOME
-              </li>
-            </Link>
-
-
+            {/* {<Fragment>{token ? authLinks : guestLinks}</Fragment>} */}
           </ul>
         </nav>
 
@@ -99,8 +119,15 @@ class NavigationBar extends Component {
       </div>
     )
   }
-    
-  
 }
 
-export default NavigationBar;
+NavigationBar.propTypes = {
+  logout: PropTypes.func.isRequired,
+  auth: PropTypes.object.isRequired,
+}
+
+const mapStateToProps = state => ({
+  auth: state.auth
+})
+
+export default connect(mapStateToProps, { logout })(NavigationBar);
