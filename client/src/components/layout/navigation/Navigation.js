@@ -3,21 +3,15 @@ import './navigation.css'
 import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
-import {logout} from '../../../actions/auth';
+import { logout } from '../../../actions/auth';
 import logo from '../background/Logo.png'
-
-const NavBar = ({auth: {isAuthenticated, loading}, }) => {
-
-}
 
 class NavigationBar extends Component {
   
-  constructor({auth}, logout) {
-    super();
-
+  constructor({auth: {isAuthenticated, loading}, logout}) {
+    super({auth: {isAuthenticated, loading}, logout});
     this.state = {
       showMenu: false,
-      auth
     }
   }
 
@@ -41,34 +35,40 @@ class NavigationBar extends Component {
     }
   }
 
-  render(){
-    const authLinks = (
+   guestLinks = (
+    <Fragment>
+      <Link to="/login">
+        <li className="navigation-expanded-list-item">
+          LOGIN
+        </li>
+      </Link>
+      <Link to="/register">
+        <li className="navigation-expanded-list-item">
+          REGISTER
+        </li>
+      </Link>
+      <Link to="/home">
+        <li className="navigation-expanded-list-item">
+          HOME
+        </li>
+      </Link>
+    </Fragment>
+  )
+  
+    authLinks = (
       <Fragment>
         <li>
-          <a onClick={logout} href="#!" >LOGOUT</a>
+          <a onClick={this.props.logout} href="#!" > 
+          <i/>{' '}
+            <span>LOGOUT</span>
+          </a>
         </li>
       </Fragment>
     )
-  
-    const guestLinks = (
-      <Fragment>
-        <Link to="/login">
-          <li className="navigation-expanded-list-item">
-            LOGIN
-          </li>
-        </Link>
-        <Link to="/register">
-          <li className="navigation-expanded-list-item">
-            REGISTER
-          </li>
-        </Link>
-        <Link to="/home">
-          <li className="navigation-expanded-list-item">
-            HOME
-          </li>
-        </Link>
-      </Fragment>
-    )
+
+  render(){
+
+    const { auth } = this.props
 
     return(
       <div>
@@ -77,7 +77,7 @@ class NavigationBar extends Component {
             <Link to="/home">
               <img src={logo} className="logo-expanded"/>
             </Link>
-            {/* {<Fragment>{token ? authLinks : guestLinks}</Fragment>} */}
+            { !auth.loading && (<Fragment>{ auth.isAuthenticated ? this.authLinks : this.guestLinks }</Fragment>)}
           </ul>
         </nav>
 
