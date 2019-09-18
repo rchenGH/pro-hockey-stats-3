@@ -47,6 +47,11 @@ class NavigationBar extends Component {
           REGISTER
         </li>
       </Link>
+      <Link to="/teams">
+        <li className="navigation-expanded-list-item">
+          TEAMS
+        </li>
+      </Link>
       <Link to="/home">
         <li className="navigation-expanded-list-item">
           HOME
@@ -55,16 +60,16 @@ class NavigationBar extends Component {
     </Fragment>
   )
   
-    authLinks = (
-      <Fragment>
-        <li>
-          <a onClick={this.props.logout} href="#!" > 
-          <i/>{' '}
-            <span>LOGOUT</span>
-          </a>
-        </li>
-      </Fragment>
-    )
+  authLinks = (
+    <Fragment>
+      <li>
+        <a onClick={this.props.logout} href="#!" > 
+        <i/>{' '}
+          <span>LOGOUT</span>
+        </a>
+      </li>
+    </Fragment>
+  )
 
   render(){
 

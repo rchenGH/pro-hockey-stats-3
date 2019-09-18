@@ -6,6 +6,7 @@ import Home from './components/home/Home';
 import Register from './components/auth/Register';
 import Login from './components/auth/Login';
 import About from './components/about/About';
+import TeamsIndex from './components/stats/teamsIndex/TeamsIndex'
 import Alert from './components/layout/alert/Alert';
 import Footer from './components/layout/footer/Footer';
 import './components/layout/background/background.css';
@@ -20,15 +21,6 @@ import store from './store';
 if(localStorage.token){
   setAuthToken(localStorage.token);
 }
-
-// class App extends Component {
-//   constructor(props){
-//     super(props)
-//     this.state = { data: null }
-//   }
-
-//   render(){
-//     return (
 
 const App = () => {
 
@@ -55,6 +47,11 @@ const App = () => {
                     exact 
                     path='/home'
                     component={() => <Home />}
+                  />
+                  <Route 
+                    exact 
+                    path='/teams'
+                    component={() => <TeamsIndex />}
                   />
                   <Route 
                     exact
