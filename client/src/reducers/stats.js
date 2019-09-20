@@ -1,9 +1,10 @@
-import { GET_TEAMS } from '../actions/types';
-
+import { GET_TEAMS, TEAMS_ERROR } from '../actions/types';
 
 const initialState = {
-    stats: [],
-    loading: true
+    teams: [],
+    team: null,
+    loading: true,
+    error: {}
 };
 
 export default function(state = initialState, action){
@@ -16,6 +17,12 @@ export default function(state = initialState, action){
                 teams: payload,
                 loading: false
             };
+        case TEAMS_ERROR:
+            return {
+                ...state,
+                error: payload,
+                loading: false
+            }
         default:
             return state;
     }

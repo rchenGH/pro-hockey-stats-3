@@ -1,0 +1,51 @@
+
+button:focus {outline:0;}
+
+.dropdown-button{
+    background-color: rgba(0, 0, 0, 0);
+    color: rgba(255, 255, 255, 1);
+    float: right;
+    padding: 10px;
+    border-color: rgba(0,0,0,0);
+    z-index: 100;
+    font: 300 12px 'Lato';
+    font-family: 'Lato', sans-serif;
+    letter-spacing: 2px;
+    border-width: 0px;
+    border-style: none;
+  }
+
+  .dropdown-menu{
+    height: 120px;
+    margin-top: 20px;
+    width: 200px;
+    background-color: rgba(0, 0, 0, 0.5);
+    position: absolute;
+    z-index: 40;
+    animation-name: dropdown-menu;
+    /* animation-duration: 0.1s; */
+    transition: 0.1s;
+    animation-play-state: running;
+    animation-fill-mode: forwards
+  }
+
+  @keyframes dropdown-menu{
+    0% {top: 100px}
+    100% {top: 50px; right: 150px}
+  }
+
+  .dropdown-ul{
+      padding: 0px;
+      text-align: center;
+      margin-top: 20px;
+  }
+
+  .dropdown-list-item{
+    display: inline;
+    margin-right: 10px;
+    text-decoration: none;
+    letter-spacing: 2px;
+    font-size: 12px;
+    padding: 10px;
+    font-weight: 300;
+  }

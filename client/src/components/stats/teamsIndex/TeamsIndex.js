@@ -1,26 +1,51 @@
-import React, {Fragment, useEffect} from 'react';
+import React, {Fragment, useEffect, useState} from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
+import Spinner from '../../layout/common/Spinner';
 import { getTeams } from '../../../actions/stats';
 
-const TeamsIndex = ({getTeams, stats }) => {
+const TeamsIndex = ({getTeams, stats: {teams, loading } }) => {
 
     useEffect(() => {
         getTeams();
-    }, [getTeams], console.log('in use effect ', stats));
+    }, [getTeams]);
 
-    return (
-        <div/>
-    )
+    let teamsArray = [];
+
+
+
+    for(let i=0; i < teams.length; i++){
+        teamsArray.push(teams[i])
+    }
+     teamsArray.sort(function(a, b){
+        if(a.name < b.name) { return -1; }
+        if(a.name > b.name) { return 1; }
+        return 0;
+    })
+
+    console.log('sorted teams array ', teamsArray)
+
+
+    return loading ? <Spinner/> : (
+            <Fragment>
+                {
+                    teamsArray.map(team => (
+                        <div key={team.id}>
+                            {team.name}
+                        </div>
+                    ))
+                }
+            </Fragment>
+        )
 }
 
-TeamsIndex.props = {
+TeamsIndex.propsTypes = {
     getTeams: PropTypes.func.isRequired,
     teams: PropTypes.object.isRequired
 }
 
-const mapStateToProps = state => ({
-    stats: state.stats
-}, console.log('state in teams index ', state.stats.teams))
+const mapStateToProps = state => { 
+    return { stats: state.stats }; 
+};
 
 export default connect(mapStateToProps, { getTeams })(TeamsIndex);

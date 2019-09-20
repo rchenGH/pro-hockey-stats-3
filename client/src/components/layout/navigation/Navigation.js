@@ -1,5 +1,6 @@
 import React, {Component, Fragment} from 'react';
 import './navigation.css'
+import './dropdown.css'
 import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
@@ -8,17 +9,38 @@ import logo from '../background/Logo.png'
 
 class NavigationBar extends Component {
   
-  constructor({auth: {isAuthenticated, loading}, logout}) {
-    super({auth: {isAuthenticated, loading}, logout});
+  constructor({ auth: {isAuthenticated, loading}, logout}) {
+    super({ auth: {isAuthenticated, loading}, logout});
+
     this.state = {
-      showMenu: false,
+      showMenu: false
+    }
+  }
+
+  showDropdown = (event) => {
+    event.preventDefault();
+    this.setState({
+      showMenu: true},
+      () => {
+        document.addEventListener('click', this.closeDropdown)
+      });
+  }
+  
+  closeDropdown = (event) => {
+    if(!this.dropdownNav.contains(event.target)){
+      this.setState(
+        {showMenu: false},
+        () => {
+          document.removeEventListener('click', this.closeDropdown);
+        }
+      )
     }
   }
 
   showMenu = (event) => {
     event.preventDefault();
-    this.setState(
-      {showMenu: true},
+    this.setState({
+      showMenu: true},
       () => {
         document.addEventListener('click', this.closeMenu)
       });
@@ -35,45 +57,55 @@ class NavigationBar extends Component {
     }
   }
 
-   guestLinks = (
-    <Fragment>
-      <Link to="/login">
-        <li className="navigation-expanded-list-item">
-          LOGIN
-        </li>
-      </Link>
-      <Link to="/register">
-        <li className="navigation-expanded-list-item">
-          REGISTER
-        </li>
-      </Link>
-      <Link to="/teams">
-        <li className="navigation-expanded-list-item">
-          TEAMS
-        </li>
-      </Link>
-      <Link to="/home">
-        <li className="navigation-expanded-list-item">
-          HOME
-        </li>
-      </Link>
-    </Fragment>
-  )
-  
-  authLinks = (
-    <Fragment>
-      <li>
-        <a onClick={this.props.logout} href="#!" > 
-        <i/>{' '}
-          <span>LOGOUT</span>
-        </a>
-      </li>
-    </Fragment>
-  )
-
   render(){
 
     const { auth } = this.props
+
+    const authLinks = (
+      <Fragment>
+        <li>
+          <a onClick={this.props.logout} href="#!" > 
+          <i/>{' '}
+            <span>LOGOUT</span>
+          </a>
+        </li>
+      </Fragment>
+    )
+
+    const guestLinks = (
+      <Fragment>
+        <Link to="/login">
+          <li className="navigation-expanded-list-item">
+            LOGIN
+          </li>
+        </Link>
+        <Link to="/register">
+          <li className="navigation-expanded-list-item">
+            REGISTER
+          </li>
+        </Link>
+
+        <button className="dropdown-button" onClick={this.showDropdown}>
+            STATS &#9660;
+        </button>
+          { this.state.showMenu ? (
+            <div className="dropdown-menu" ref={(element) => {this.dropdownNav = element;}}>
+              <ul className="dropdown-ul">
+                <Link to="/teams">
+                  <li className="dropdown-list-item">
+                    TEAMS
+                  </li>
+                </Link>
+              </ul>
+            </div> 
+          ) : ( null) }
+        <Link to="/home">
+          <li className="navigation-expanded-list-item">
+            HOME
+          </li>
+        </Link>
+      </Fragment>
+    )
 
     return(
       <div>
@@ -82,7 +114,7 @@ class NavigationBar extends Component {
             <Link to="/home">
               <img src={logo} className="logo-expanded"/>
             </Link>
-            { !auth.loading && (<Fragment>{ auth.isAuthenticated ? this.authLinks : this.guestLinks }</Fragment>)}
+            { !auth.loading && (<Fragment>{ auth.isAuthenticated ? authLinks : guestLinks }</Fragment>)}
           </ul>
         </nav>
 

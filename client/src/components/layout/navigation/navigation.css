@@ -66,16 +66,12 @@
   transition: 1s;
   animation-play-state: running;
   animation-fill-mode: forwards
-
 }
 
 @keyframes menu{
   0% {left: 400px}
   100% {left: 0%}
 }
-
-
-
 
 .navigation-collapsed-list{
   list-style-type: none;
