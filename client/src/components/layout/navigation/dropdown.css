@@ -17,9 +17,9 @@ button:focus {outline:0;}
 
   .dropdown-menu{
     height: 120px;
-    margin-top: 20px;
+    margin-top: 8px;
     width: 200px;
-    background-color: rgba(0, 0, 0, 0.5);
+    /* background-color: rgba(0, 0, 0, 0.5); */
     position: absolute;
     z-index: 40;
     animation-name: dropdown-menu;
@@ -31,16 +31,22 @@ button:focus {outline:0;}
 
   @keyframes dropdown-menu{
     0% {top: 100px}
-    100% {top: 50px; right: 150px}
+    100% {top: 30px; right: -50px}
   }
 
   .dropdown-ul{
       padding: 0px;
       text-align: center;
-      margin-top: 20px;
+      margin-top: 10px;
+      background-color: rgba(0,0,0,0.5);
+  }
+
+  .dropdown-item:hover{
+    background-color: rgba(0,0,0,1);
   }
 
   .dropdown-list-item{
+    color: rgba(255,255,255,1);
     display: inline;
     margin-right: 10px;
     text-decoration: none;
@@ -48,4 +54,13 @@ button:focus {outline:0;}
     font-size: 12px;
     padding: 10px;
     font-weight: 300;
+  }
+
+  .dropdown-list-item:hover, a:hover{
+    color: rgba(200,80,30,1);
+    text-decoration: none
+  }
+
+  .down-arrow{
+      font-size: 10px;
   }

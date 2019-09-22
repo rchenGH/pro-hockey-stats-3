@@ -1,8 +1,12 @@
-import React, {Fragment, useEffect, useState} from 'react';
+import React, {Fragment, useEffect} from 'react';
+import './teamindex.css';
+import { Link } from 'react-router-dom';
+import { Card, Button, CardTitle, CardText, Container, Row, Col } from 'reactstrap';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import Spinner from '../../layout/common/Spinner';
 import { getTeams } from '../../../actions/stats';
+
 
 const TeamsIndex = ({getTeams, stats: {teams, loading } }) => {
 
@@ -11,8 +15,6 @@ const TeamsIndex = ({getTeams, stats: {teams, loading } }) => {
     }, [getTeams]);
 
     let teamsArray = [];
-
-
 
     for(let i=0; i < teams.length; i++){
         teamsArray.push(teams[i])
@@ -23,18 +25,23 @@ const TeamsIndex = ({getTeams, stats: {teams, loading } }) => {
         return 0;
     })
 
-    console.log('sorted teams array ', teamsArray)
-
-
     return loading ? <Spinner/> : (
             <Fragment>
-                {
-                    teamsArray.map(team => (
-                        <div key={team.id}>
-                            {team.name}
-                        </div>
-                    ))
-                }
+                <Container>
+                    <Row>
+                        {
+                            teamsArray.map(team => (
+                                <Col key={team.id} xs="12" sm="6" md="4" lg="3"> 
+                                    <Link to="">
+                                        <Card body className="team-card">
+                                            <CardTitle>{team.name}</CardTitle>
+                                        </Card>
+                                    </Link>
+                                </Col>
+                            ))
+                        }
+                    </Row>               
+                </Container>
             </Fragment>
         )
 }
@@ -47,5 +54,10 @@ TeamsIndex.propsTypes = {
 const mapStateToProps = state => { 
     return { stats: state.stats }; 
 };
+
+
+
+
+
 
 export default connect(mapStateToProps, { getTeams })(TeamsIndex);
