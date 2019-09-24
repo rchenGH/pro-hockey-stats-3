@@ -18,15 +18,16 @@ import logo from '../background/Logo.png'
 
 class NavigationBar extends Component {
   
-  constructor({ auth: {isAuthenticated, loading}, logout}) {
-    super({ auth: {isAuthenticated, loading}, logout});
+  constructor(props) {
+    // { auth: {isAuthenticated, loading}, logout}
+    super(props);
 
     this.state = {
       isOpen: false
     };
   }
 
-  toggle =() => {
+  toggle = () => {
     this.setState({
       isOpen: !this.state.isOpen
     });

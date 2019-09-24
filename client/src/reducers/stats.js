@@ -1,7 +1,8 @@
-import { GET_TEAMS, TEAMS_ERROR } from '../actions/types';
+import { GET_TEAMS, GET_ROSTER, TEAMS_ERROR } from '../actions/types';
 
 const initialState = {
     teams: [],
+    roster: [],
     team: null,
     loading: true,
     error: {}
@@ -15,6 +16,12 @@ export default function(state = initialState, action){
             return {
                 ...state,
                 teams: payload,
+                loading: false
+            };
+        case GET_ROSTER:
+            return {
+                ...state,
+                roster: payload,
                 loading: false
             };
         case TEAMS_ERROR:

@@ -7,6 +7,7 @@ import Register from './components/auth/Register';
 import Login from './components/auth/Login';
 import About from './components/about/About';
 import TeamsIndex from './components/stats/teamsIndex/TeamsIndex'
+import TeamRosterDetails from './components/stats/teamRosterDetails/TeamRosterDetails';
 import Alert from './components/layout/alert/Alert';
 import Footer from './components/layout/footer/Footer';
 import './components/layout/background/background.css';
@@ -52,6 +53,11 @@ const App = () => {
                     exact 
                     path='/teams'
                     component={() => <TeamsIndex />}
+                  />
+                  <Route 
+                    exact 
+                    path='/teams/:teamName/roster'
+                    component={() => <TeamRosterDetails />}
                   />
                   <Route 
                     exact
