@@ -26,12 +26,10 @@ const TeamsIndex = ({getTeams, stats: {teams, loading } }) => {
         return 0;
     })
 
-
     return loading ? <Spinner/> : (
             <Fragment>
-                <Container>
-                    <Row>
-                        {console.log('state in index', teamsArray)}
+                <Container className="index-container">
+                    <Row className="index-row">
                         <TeamsList teams={teamsArray} />
                     </Row>               
                 </Container>

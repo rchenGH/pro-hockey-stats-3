@@ -1,0 +1,55 @@
+
+.team-rosters-details-container{
+    max-height: auto;
+    width: 100vw;
+    padding-top: 100px;
+    padding-bottom: 100px;
+    max-width: 1000px;
+    overflow-y:scroll;
+    overflow-x:hidden;
+    height: 100vh;
+}
+
+.roster-table{
+    margin-top: 50px;
+}
+
+table {
+    color: rgba(59,59,59,1);
+    border-collapse: separate;
+    border-spacing: 2px;
+}
+
+.table .number, .table .player, .table .position {
+    border-bottom-color: rgba(59,59,59,1);
+}
+
+ .table .table-row:hover{
+    animation-name: trhover;
+    animation-duration: 0.5s;
+    transition: 1s;
+    animation-fill-mode: forwards;
+    animation-play-state: running;
+}
+
+@keyframes trhover{
+    0% {transform: scale(1);}
+    100% {transform: scale(1.1);}
+
+  }
+
+  .table th, .table thead, .table td, .table tr{
+    color: rgba(59,59,59,1);
+    background-color: rgba(220, 100, 50, 1);
+    text-align: center;
+  }
+
+  .table td, .table th, .table tr{
+      border: 0px;
+  }
+
+  .table-bordered td, .table-bordered th{
+      border: 0px;
+  }
+
+  

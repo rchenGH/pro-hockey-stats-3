@@ -1,0 +1,40 @@
+.mini-logo-div{
+    margin-top: -9px;
+  }
+  
+  .mini-logo{
+    height: 100px;
+    margin-bottom: -49px;
+    transition: height 500ms;
+    text-align: center;
+    padding-left: 5%;
+    z-index: 3;
+  }
+  
+  .logo-div{
+    z-index: 5;
+  }
+  
+  #root > div > div:nth-child(1) > nav > a > div > img{
+    display: none;
+  }
+  
+  @media only screen and (max-width: 768px) {
+    .logo-div{
+      height: 40px;
+      width: auto;
+    }
+  
+    .mini-logo{
+      margin-top: -5px;
+      height: 70px;
+      z-index: 5;
+    }
+  
+    .main-logo-div{
+      display: none;
+      z-index: 5;
+    }
+  
+  }
+  

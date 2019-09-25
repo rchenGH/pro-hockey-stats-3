@@ -41,14 +41,10 @@ Promise.all(urls.map(url => fetch(url)))
 // @desc    Get all teams
 // @access  Public
 
-        router.get(`/${linkTeamName}/roster`, (req, res) => {
-
-            // console.log('result in roster', result)
-            
+        router.get(`/${linkTeamName}/roster`, (req, res) => {            
             res.json(result[i+2]);
 
             Roster.find().then(team => {
-                console.log('this is team in roster ', team)
             
             })
                 fetch(`https://statsapi.web.nhl.com/api/v1/teams/${i}/roster`)

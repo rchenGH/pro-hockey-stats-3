@@ -1,7 +1,6 @@
 .hockey-background{
-    background-image: url("./Background.jpg");
+    /* background-image: url("./Background.jpg"); */
     height: 100vh;
     background-size: cover;
-    /* margin-bottom: 45px; */
+    margin-bottom: 45px;
   }
-  

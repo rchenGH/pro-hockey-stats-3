@@ -39,7 +39,7 @@ Promise.all(urls.map(url => fetch(url)))
 
         playerName.map((name, index) => {
 
-        // @route   GET api/teams/(teamname)/rosters/players/people/${player}
+        // @route   GET api/teams/(teamname)/roster/players/people/${player}
         // @desc    Get all teams
         // @access  Public
 
@@ -53,7 +53,6 @@ Promise.all(urls.map(url => fetch(url)))
                 }).catch(err => console.log(err))
                 .then(function(player){
                     res.json(player)
-                    console.log("player stats ", player.people[0].stats)
                 }).catch(err => console.log('error in player stats api', err));
             })
         })

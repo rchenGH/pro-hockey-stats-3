@@ -34,7 +34,7 @@ const App = () => {
       <Provider store={ store }>
         <Router>
           <div className="App hockey-background"
-              style={{backgroundColor: "rgba(59,59,59,1)", paddingTop:'5px', width: '100vw', paddingBottom:'50px'}}
+              style={{backgroundColor: "rgba(59,59,59,1)", paddingTop:'5px', width: '100vw'}}
               >
               <div className="routes">
                 <NavigationBar/>

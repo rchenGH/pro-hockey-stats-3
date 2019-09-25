@@ -70,12 +70,8 @@ export const login = ( email, password ) => async dispatch => {
 
     const body = JSON.stringify({ email, password });
 
-    console.log('body in auth actions ', body)
-
-
     try {
         const res = await axios.post('api/auth', body, config);
-        console.log('res in action auth, returns a promise ', res)
         dispatch({
             type: LOGIN_SUCCESS,
             payload: res.data

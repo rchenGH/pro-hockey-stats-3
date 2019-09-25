@@ -2,6 +2,7 @@ import React, {Component, Fragment} from 'react';
 import {
   Collapse,
   Navbar,
+  NavbarBrand,
   NavbarToggler,
   Nav,
   UncontrolledDropdown,
@@ -14,7 +15,8 @@ import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 import { logout } from '../../../actions/auth';
-import logo from '../background/Logo.png'
+import  HockeyLogo  from '../logo/Logo';
+
 
 class NavigationBar extends Component {
   
@@ -93,10 +95,11 @@ class NavigationBar extends Component {
 
     return (
       <div>
-        <Navbar expand="md">
+        <Navbar expand="md" fixed="top">
           <Link to="/home">
-            <img src={logo} className="logo-expanded"/>
+            <HockeyLogo/>
           </Link>
+          
           <NavbarToggler onClick={this.toggle} />
           <Collapse isOpen={this.state.isOpen} navbar>
             <Nav className="ml-auto" navbar>
