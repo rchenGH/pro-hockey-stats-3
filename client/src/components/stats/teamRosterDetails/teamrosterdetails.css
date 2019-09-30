@@ -24,20 +24,6 @@ table {
     border-bottom-color: rgba(59,59,59,1);
 }
 
- .table .table-row:hover{
-    animation-name: trhover;
-    animation-duration: 0.5s;
-    transition: 1s;
-    animation-fill-mode: forwards;
-    animation-play-state: running;
-}
-
-@keyframes trhover{
-    0% {transform: scale(1);}
-    100% {transform: scale(1.1);}
-
-  }
-
   .table th, .table thead, .table td, .table tr{
     color: rgba(59,59,59,1);
     background-color: rgba(220, 100, 50, 1);
@@ -52,4 +38,12 @@ table {
       border: 0px;
   }
 
+.full-name a{
+    text-decoration: underline;
+    color: rgba(80,80,80,1);
+}
+
+.full-name a:hover{
+    color: rgba(120,120,120,1);
+}
   

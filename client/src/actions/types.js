@@ -9,4 +9,5 @@ export const LOGIN_FAIL = "LOGIN_FAIL";
 export const LOGOUT = "LOGOUT";
 export const GET_TEAMS = "GET_TEAMS";
 export const GET_ROSTER = "GET_ROSTER";
+export const GET_PLAYER = "GET_PLAYER";
 export const TEAMS_ERROR = "TEAM_ERROR"

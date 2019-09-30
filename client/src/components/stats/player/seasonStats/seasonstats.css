@@ -1,0 +1,73 @@
+.season-table{
+    padding-top: 150px;
+}
+
+.PlayerDetails{
+    margin-top: 200px;
+    margin-left: 50px;
+    margin-right: 50px;
+    padding-right: 50px;
+    min-height: 100vh;
+    max-height: auto;
+    width: 100vw;
+    padding-bottom: 30px;
+    background-color: rgba(59,59,59,1)
+  }
+  
+  .show-name{
+    color: rgba(59, 59, 59, 1);
+    text-align: center;
+    position: relative;
+    font-size: 24px;
+    font-weight: normal;
+    width: auto;
+    max-width: 300px;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    margin-left: 15px;
+    border-top-left-radius: 20px;
+    border-top-right-radius: 5px;
+    -webKit-transform: skewX(-25deg);
+    background-color: rgba(255, 132, 59, 1);
+  }
+  
+   .table .season, .table .team, .table .age, .table .gp, .table .g, .table .a,
+  .table .pts, .table .plus_minus, .table .pim, .table .evg, .table .eva, .table .ppg, .table .ppa, .table .sh, .table .gw, .table .s, .table .s_percentage{
+  
+    border-bottom-color: rgba(59,59,59,1);
+    margin-right: auto;
+    margin-left: auto;
+    background-color: rgba(255, 132, 59, 1);
+  }
+  
+
+  .season{
+    min-width: 100px;
+    max-width: 100px;
+  }
+  
+  #season{
+    background-color: rgba(255, 132, 59, 1);
+  }
+  
+  .note{
+    color: rgba(255,255,255,0.6);
+    font-size: 14px;
+  }
+  
+  table .goalsper82, table .assistsper82, table .pointsper82{
+    color: rgba(59,59,59,1)
+  }
+  
+   .table .next-season, .table .projected-goals, .table .projected-assists, .table .projected-points, .table .projected-shots, .table .projected-shot-percentage{
+    color: rgba(59,59,59,1);
+    border-color: rgba(59,59,59,1);
+    border-width: 2px;
+    border-style: solid;
+    background-color: rgba(255, 132, 59, 1);
+  }
+  
+  #projection-year{
+    background-color: rgba(255, 132, 59, 1);
+  }
+  

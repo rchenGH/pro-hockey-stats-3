@@ -1,16 +1,20 @@
-import React, {Component, Fragment, useEffect} from 'react';
+import React, { Fragment, useEffect} from 'react';
 import { connect } from 'react-redux';
-import { Card, CardTitle, Col, Container, Row, Table } from 'reactstrap';
-import { getRoster } from '../../../actions/stats';
+import PropTypes from 'prop-types';
+import { Container, Row, Table } from 'reactstrap';
+import { getPlayer } from '../../../actions/stats';
+import { Link } from 'react-router-dom';
 import './teamrosterdetails.css';
 
-function TeamRosterDetails(props){
+
+
+const TeamRosterDetails = ({getPlayer, stats}) =>{
 
     useEffect(() => {
-       getRoster();
-    }, [getRoster]);
+       getPlayer();
+    }, [getPlayer]);
 
-    const { roster = [] } = props.stats.stats.roster
+    const { roster = [] } = stats.roster
 
     let rosterArray = [];
 
@@ -18,19 +22,14 @@ function TeamRosterDetails(props){
         rosterArray.push(roster[i]);
     }
 
-
     rosterArray.sort(function(a, b){
         const lastNameSort1 = a.person.fullName.split(' ')[1]
         const lastNameSort2 = b.person.fullName.split(' ')[1]
-
 
         if(lastNameSort1 < lastNameSort2) { return -1; }
         if(lastNameSort1 > lastNameSort2) { return 1; }
         return 0;
     })
-
-    console.log('roster array ', rosterArray)
-
 
     return(
         <Fragment>
@@ -49,7 +48,12 @@ function TeamRosterDetails(props){
                             rosterArray.map(player => (
                                 <tr className="table-row" scope="row" key={player.person.id}>
                                     <td className="table-data">{player.jerseyNumber}</td>
-                                    <td className="table-data">{player.person.fullName}</td>
+                                    <td className="table-data full-name" >
+                                        <Link to={`${player.person.fullName.split(" ").join("").toLowerCase()}`} 
+                                            onClick={ () => getPlayer(stats.team, player.person.fullName.split(" ").join("").toLowerCase()) }>
+                                            {player.person.fullName}
+                                        </Link>
+                                    </td>
                                     <td className="table-data">{player.position.code}</td>
                                 </tr>
                             ))
@@ -62,7 +66,13 @@ function TeamRosterDetails(props){
     )
 }
 
-const mapStateToProps = state => ({
-    stats: state
-})
-export default connect(mapStateToProps, {getRoster})(TeamRosterDetails);
+TeamRosterDetails.propTypes = {
+    stats: PropTypes.object.isRequired,
+    getPlayer: PropTypes.func.isRequired
+}
+
+const mapStateToProps = state => {
+    return {stats: state.stats}
+}
+
+export default connect(mapStateToProps, {getPlayer})(TeamRosterDetails);

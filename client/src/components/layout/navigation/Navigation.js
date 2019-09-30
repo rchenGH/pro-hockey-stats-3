@@ -74,7 +74,7 @@ class NavigationBar extends Component {
             <DropdownItem>
               <Link to="/teams">
                 <li className="dropdown-list-item">
-                  TEAMS
+                   TEAMS
                 </li>
               </Link>
             </DropdownItem>

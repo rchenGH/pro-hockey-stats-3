@@ -17,25 +17,3 @@
 .index-col{
     background-color: rgba(127, 65, 0, 1);
 }
-
-.team-card{
-    background-color: rgba(220, 100, 50, 1);
-    color: rgba(59, 59, 59, 1);
-    margin: 10px 0px 10px 0px;
-    height: 100px;
-    border-radius: 0px;
-    text-align: center;
-}
-
-.team-card:hover{
-    animation-name: teamcard;
-    animation-duration: 0.5s;
-    transition: 1s;
-    animation-play-state: running;
-    animation-fill-mode: forwards
-}
-
-@keyframes teamcard{
-    0% {transform: scale(1)}
-    100% {transform: scale(1.25) }
-  }
