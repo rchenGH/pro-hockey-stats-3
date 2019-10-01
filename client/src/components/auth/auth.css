@@ -1,0 +1,72 @@
+.auth-container{
+    margin: 200px auto 0px auto;
+    text-align: center;
+}
+
+.auth-row{
+    width: 350px;
+    margin-right: auto;
+    margin-left: auto;
+}
+
+.auth-col-form{
+    padding: 0px;
+    width: 350px;
+}
+
+input{
+    border-width: 0px;
+    padding-left: 10px;
+}
+
+input::placeholder{
+    color: rgba(220, 100, 50, 0.5)
+}
+
+input:focus {
+    background-color: rgba(220, 100, 50, 0.05);
+}
+
+input[type=email], input[type=password], input[type=text]{
+    color: rgba(150,150,150,1);
+}
+
+.form-input{
+    width: 350px;
+    margin-bottom: 20px;
+    background-color: rgba(59,59,59,0.3);
+    height: 50px;
+    outline: 1px solid rgba(220, 100, 50, 1);
+}
+
+.form-input:focus {
+    outline: 2px solid rgba(220, 100, 50, 1);
+}
+
+.form-input-button{
+    width: 350px;
+    margin-bottom: 20px;
+    background-color: rgba(220, 100, 50, 1);
+    height: 50px;
+}
+
+.form-input-active{
+    background-color: rgba(255, 132, 59, 1);
+}
+
+.form-input-button:focus {
+    outline: 2px solid rgba(150,150,150, 1);
+    background-color: rgba(255, 132, 59, 1);
+}
+
+.account-header{
+    color: rgba(220, 100, 50, 1);
+}
+
+.account-text{
+    color: rgba(100,100,100, 1)
+}
+
+.sign-link{
+    color: rgba(220, 100, 50,1)
+}

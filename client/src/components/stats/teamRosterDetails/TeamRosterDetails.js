@@ -10,9 +10,7 @@ import './teamrosterdetails.css';
 
 const TeamRosterDetails = ({getPlayer, stats}) =>{
 
-    useEffect(() => {
-       getPlayer();
-    }, [getPlayer]);
+// class TeamRosterDetails extends Component {}
 
     const { roster = [] } = stats.roster
 
@@ -31,13 +29,19 @@ const TeamRosterDetails = ({getPlayer, stats}) =>{
         return 0;
     })
 
+
     return(
         <Fragment>
             <Container className="team-rosters-details-container" style={{marginLeft:"auto", marginRight:"auto"}}>
+                <div className="row">
+                    <div className="details-name" style={{minWidth: "300px"}}>
+                        Forwards
+                    </div>
+                </div>
                 <Row>
-                    <Table className="roster-table">
+                    <Table>
                     <thead>
-                        <tr className="table-head-row">
+                        <tr>
                             <th className="number">NUMBER</th>
                             <th className="player">PLAYER</th>
                             <th className="position">POSITION</th>
@@ -46,6 +50,10 @@ const TeamRosterDetails = ({getPlayer, stats}) =>{
                     <tbody className='table-body'>
                         {
                             rosterArray.map(player => (
+                                player.position.code === "C" ||
+                                player.position.code === "L" || 
+                                player.position.code === "R" ? 
+
                                 <tr className="table-row" scope="row" key={player.person.id}>
                                     <td className="table-data">{player.jerseyNumber}</td>
                                     <td className="table-data full-name" >
@@ -56,6 +64,79 @@ const TeamRosterDetails = ({getPlayer, stats}) =>{
                                     </td>
                                     <td className="table-data">{player.position.code}</td>
                                 </tr>
+                                : null
+                            ))
+                        }
+                    </tbody>
+                    </Table>
+                </Row>
+
+                <br/>
+                <div className="row">
+                    <div className="details-name" style={{minWidth: "300px"}}>
+                        Defence
+                    </div>
+                </div>
+                <Row>
+                    <Table>
+                    <thead>
+                        <tr>
+                            <th className="number">NUMBER</th>
+                            <th className="player">PLAYER</th>
+                            <th className="position">POSITION</th>
+                        </tr>
+                    </thead>
+                    <tbody className='table-body'>
+                        {
+                            rosterArray.map(player => (
+                                player.position.code === "D" ? 
+                                <tr className="table-row" scope="row" key={player.person.id}>
+                                    <td className="table-data">{player.jerseyNumber}</td>
+                                    <td className="table-data full-name" >
+                                        <Link to={`${player.person.fullName.split(" ").join("").toLowerCase()}`} 
+                                            onClick={ () => getPlayer(stats.team, player.person.fullName.split(" ").join("").toLowerCase()) }>
+                                            {player.person.fullName}
+                                        </Link>
+                                    </td>
+                                    <td className="table-data">{player.position.code}</td>
+                                </tr>
+                                : null
+                            ))
+                        }
+                    </tbody>
+                    </Table>
+                </Row>
+
+                <br/>
+                <div className="row">
+                    <div className="details-name" style={{minWidth: "300px"}}>
+                        Goalies
+                    </div>
+                </div>
+                <Row>
+                    <Table>
+                    <thead>
+                        <tr>
+                            <th className="number">NUMBER</th>
+                            <th className="player">PLAYER</th>
+                            <th className="position">POSITION</th>
+                        </tr>
+                    </thead>
+                    <tbody className='table-body'>
+                        {
+                            rosterArray.map(player => (
+                                player.position.code === "G" ? 
+                                <tr className="table-row" scope="row" key={player.person.id}>
+                                    <td className="table-data">{player.jerseyNumber}</td>
+                                    <td className="table-data full-name" >
+                                        <Link to={`${player.person.fullName.split(" ").join("").toLowerCase()}`} 
+                                            onClick={ () => getPlayer(stats.team, player.person.fullName.split(" ").join("").toLowerCase()) }>
+                                            {player.person.fullName}
+                                        </Link>
+                                    </td>
+                                    <td className="table-data">{player.position.code}</td>
+                                </tr>
+                                : null
                             ))
                         }
                     </tbody>

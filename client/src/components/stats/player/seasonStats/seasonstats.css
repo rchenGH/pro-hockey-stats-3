@@ -1,20 +1,17 @@
-.season-table{
-    padding-top: 150px;
-}
-
 .PlayerDetails{
-    margin-top: 200px;
-    margin-left: 50px;
-    margin-right: 50px;
-    padding-right: 50px;
+    margin-top: 150px;
+    margin-left: 20px;
+    margin-right: 20px;
     min-height: 100vh;
     max-height: auto;
-    width: 100vw;
+    width: auto;
+    padding-left: 0px;
+    padding-right: 0px;
     padding-bottom: 30px;
     background-color: rgba(59,59,59,1)
   }
   
-  .show-name{
+  .details-name{
     color: rgba(59, 59, 59, 1);
     text-align: center;
     position: relative;
@@ -39,11 +36,15 @@
     margin-left: auto;
     background-color: rgba(255, 132, 59, 1);
   }
+
+  .span-name{
+    -webKit-transform: skewX(100deg);
+  }
   
 
   .season{
-    min-width: 100px;
-    max-width: 100px;
+    max-width: 150px;
+    padding-top: 10px;
   }
   
   #season{
@@ -69,5 +70,41 @@
   
   #projection-year{
     background-color: rgba(255, 132, 59, 1);
+  }
+  
+  .details-name, .show-projections{
+    color: rgba(59, 59, 59, 1);
+    text-align: center;
+    position: relative;
+    font-size: 24px;
+    font-weight: normal;
+    width: auto;
+    max-width: 300px;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    margin-left: 15px;
+    border-top-left-radius: 20px;
+    border-top-right-radius: 5px;
+    -webKit-transform: skewX(-25deg);
+    background-color: rgba(255, 132, 59, 1);
+  }
+
+  .season-row:hover{
+    animation-duration: 0.5s;
+    animation-name: rowhover;
+    animation-play-state: running;
+    background-color: rgba(255, 80, 30, 0.7);
+    animation-fill-mode: forwards;
+  }
+
+  @keyframes rowhover{
+    0% {
+      -webKit-transform: translate3d(0, -10, -10);
+      transform: scale(1);
+    }
+    100% {
+      -webKit-transform: translate3d(0, 0, 0);
+      transform: scale(1.06);
+    }
   }
   

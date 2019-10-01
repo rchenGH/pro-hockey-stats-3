@@ -1,10 +1,12 @@
 
 .home{
+    background-image: url("../layout/background//Background.jpg");
+    background-size: cover;
     background-color: rgba(59,59,59,1);
-    height: 100vh;
-    margin-top: -100vh;
+    height: auto;
     width: 100vw;
-    margin-bottom: 20vh;
+    margin-bottom: 45px;
+
   }
   
   .playerbackground{

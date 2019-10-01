@@ -17,7 +17,7 @@ class Home extends Component {
         <div>
           <p>Hello {this.props.data}</p>
         </div>
-        {/* <div className="player-background" style={{backgroundColor: 'rgba(59,59,59,1)'}}> */}
+        <div className="player-background" style={{backgroundColor: 'rgba(59,59,59,1)'}}>
 
           {/* <div className="top-10-header-div">
             <p className="top-10-header">TOP 10 CURRENT PLAYERS</p>
@@ -42,7 +42,7 @@ class Home extends Component {
               </div>
             </div> */}
           {/* </div> */}
-        {/* </div> */}
+        </div>
       </div>
 
     )
