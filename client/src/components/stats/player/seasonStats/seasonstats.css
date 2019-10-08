@@ -29,7 +29,10 @@
   }
   
    .table .season, .table .team, .table .age, .table .gp, .table .g, .table .a,
-  .table .pts, .table .plus_minus, .table .pim, .table .evg, .table .eva, .table .ppg, .table .ppa, .table .sh, .table .gw, .table .s, .table .s_percentage{
+  .table .pts, .table .plus_minus, .table .pim, .table .evg, .table .eva, 
+  .table .ppg, .table .ppa, .table .sh, .table .gw, .table .s, .table .s_percentage, 
+  .table .gs, .table .wins, .table .losses, .table .ties, .table .ot, .table .sa,
+  .table .ga, .table .gaa, .table .saves, .table .sv-pct, .table .toi {
   
     border-bottom-color: rgba(59,59,59,1);
     margin-right: auto;
@@ -60,7 +63,8 @@
     color: rgba(59,59,59,1)
   }
   
-   .table .next-season, .table .projected-goals, .table .projected-assists, .table .projected-points, .table .projected-shots, .table .projected-shot-percentage{
+   .table .next-season, .table .projected-goals, .table .projected-assists, .table .projected-points, .table .projected-shots, 
+   .table .projected-shot-percentage{
     color: rgba(59,59,59,1);
     border-color: rgba(59,59,59,1);
     border-width: 2px;

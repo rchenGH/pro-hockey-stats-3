@@ -33,7 +33,6 @@ const Register = ( {setAlert, register, isAuthenticated} ) => {
         return <Redirect to="/dashboard" />
     }
 
-
     return (
         <Fragment>
             <Container className="auth-container">
