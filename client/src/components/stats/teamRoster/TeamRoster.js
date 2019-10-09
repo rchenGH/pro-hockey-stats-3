@@ -8,16 +8,10 @@ import Spinner from '../../layout/common/Spinner'
 import './teamroster.css'
 
  class TeamRoster extends Component{     
-    constructor(stats, getRoster){
-        super(stats, getRoster);
-        this.state = {
-          team: {},
-        }
-      };
 
     render(){
         const { name, getRoster } = this.props
-        const { loading } = this.props.stats.stats
+        const { loading } = this.props.stats
 
         let teamLink = this.props.teamName.split(' ').join('').toLowerCase();
     
@@ -44,7 +38,7 @@ TeamRoster.propTypes = {
 }
 
 const mapStateToProps = state => {
-    return {stats: state}
+    return state
 }
 
 export default connect(mapStateToProps, {getRoster})(TeamRoster)

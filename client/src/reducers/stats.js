@@ -3,7 +3,6 @@ import { GET_TEAMS, GET_ROSTER, GET_PLAYER, TEAMS_ERROR } from '../actions/types
 const initialState = {
     teams: [],
     roster: [],
-    playerStats: [],
     player: null,
     team: null,
     loading: true,
@@ -30,7 +29,10 @@ export default function(state = initialState, action){
         case GET_PLAYER:
             return {
                 ...state,
-                playerStats: payload,
+                people: payload.people[0],
+                currentTeam: payload.people[0].currentTeam,
+                primaryPositionType: payload.people[0].primaryPosition.type,
+                splits: payload.people[0].stats[0].splits,
                 loading: false,
                 team,
                 player

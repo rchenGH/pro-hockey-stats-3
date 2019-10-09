@@ -7,15 +7,6 @@ const isEmpty = require('../../functions/isEmpty')
 // Model
 const Roster = require('../../models/Roster');
 
-// // is empty object
-// function isEmpty(arr) {
-//     if( arr === undefined || arr.length == 0  || arr ===null ){
-//         return true;
-//     } else {
-//         return false;
-//     }
-// }
-
 // @route   GET api/teams/${teamName}/rosters
 // @desc    Get all teams
 // @access  Public

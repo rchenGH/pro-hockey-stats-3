@@ -10,8 +10,6 @@ import './teamrosterdetails.css';
 
 const TeamRosterDetails = ({getPlayer, stats}) =>{
 
-// class TeamRosterDetails extends Component {}
-
     const { roster = [] } = stats.roster
 
     let rosterArray = [];
@@ -28,7 +26,6 @@ const TeamRosterDetails = ({getPlayer, stats}) =>{
         if(lastNameSort1 > lastNameSort2) { return 1; }
         return 0;
     })
-
 
     return(
         <Fragment>
@@ -57,8 +54,7 @@ const TeamRosterDetails = ({getPlayer, stats}) =>{
                                 <tr className="table-row" scope="row" key={player.person.id}>
                                     <td className="table-data">{player.jerseyNumber}</td>
                                     <td className="table-data full-name" >
-                                        <Link to={`${player.person.fullName.split(" ").join("").toLowerCase()}`} 
-                                            onClick={ () => getPlayer(stats.team, player.person.fullName.split(" ").join("").toLowerCase()) }>
+                                        <Link to={`${player.person.fullName.split(" ").join("").toLowerCase()}`}>
                                             {player.person.fullName}
                                         </Link>
                                     </td>
@@ -94,7 +90,8 @@ const TeamRosterDetails = ({getPlayer, stats}) =>{
                                     <td className="table-data">{player.jerseyNumber}</td>
                                     <td className="table-data full-name" >
                                         <Link to={`${player.person.fullName.split(" ").join("").toLowerCase()}`} 
-                                            onClick={ () => getPlayer(stats.team, player.person.fullName.split(" ").join("").toLowerCase()) }>
+                                            // onClick={ () => getPlayer(stats.team, player.person.fullName.split(" ").join("").toLowerCase()) }
+                                            >
                                             {player.person.fullName}
                                         </Link>
                                     </td>
@@ -130,7 +127,8 @@ const TeamRosterDetails = ({getPlayer, stats}) =>{
                                     <td className="table-data">{player.jerseyNumber}</td>
                                     <td className="table-data full-name" >
                                         <Link to={`${player.person.fullName.split(" ").join("").toLowerCase()}`} 
-                                            onClick={ () => getPlayer(stats.team, player.person.fullName.split(" ").join("").toLowerCase()) }>
+                                            // onClick={ () => getPlayer(stats.team, player.person.fullName.split(" ").join("").toLowerCase()) }
+                                            >
                                             {player.person.fullName}
                                         </Link>
                                     </td>

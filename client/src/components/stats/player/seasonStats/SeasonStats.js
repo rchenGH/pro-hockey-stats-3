@@ -5,59 +5,27 @@ import { Table } from 'reactstrap';
 import Spinner from '../../../layout/common/Spinner'
 import './seasonstats.css';
 import axios from 'axios'
-import toiStat from './toiStat';
-import toiTotal from './toiTotal'
+import toiStat from './statFunctions/toiStat';
+import toiTotal from './statFunctions/toiTotal';
+import splitYear from './statFunctions/splitYear';
 
 class SeasonStats extends Component {
 
-    constructor(){
-        super();
-        this.state = {
-            people: [],
-            currentTeam: [],
-            splits: [],
-            primaryPositionType: null,
-            timeOnIce: []
-        }
-    };
-
-    componentDidUpdate (prevProps) {
-        const { player, team } = this.props.stats.stats
-       
-        axios.get(`/teams/${team}/roster/${player}`)
-        .then(res => {
-            if(player !== prevProps.stats.stats.player){
-            this.setState ({
-                people: res.data.people[0],
-                currentTeam: res.data.people[0].currentTeam,
-                primaryPositionType: res.data.people[0].primaryPosition.type,
-                splits: res.data.people[0].stats[0].splits
-            })
-        }
-        }).catch((err) => {
-            console.log(err)
-        })
-    }
-    
     render() {
 
-        const splitYear = (year) => {
-            let str = year.split('')
-            str.splice(4, 0, '-')
-            return str.join('')
-          }
 
 
-        const { loading } = this.props.stats.stats
+        const { loading } = this.props.stats
 
-        const { splits, people, currentTeam, primaryPositionType} = this.state;
+
+        const { splits, people, currentTeam, primaryPositionType} = this.props.stats;
 
         let [   gamesResult, goalsResult, assistsResult, pointsResult, pmResult, pimResult, 
                 ppgResult, pppResult, shgResult, gwgResult, shotsResult, shotPctResult,
                 gsResult, winsResult, lossesResult, otResult, saResult, gaResult, 
-                gaaResult, savesResult, toiResult, toiSeasonArray ] 
+                savesResult, toiResult, toiSeasonArray ] 
                 = [ 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
-                    0, 0, 0, 0, 0, 0, 0, 0, 0, 0 ]
+                    0, 0, 0, 0, 0, 0, 0, 0, 0 ]
 
         const statResults = (result, playerStat) => {
             for(let i = 0; i < splits.length; i++){
@@ -67,20 +35,22 @@ class SeasonStats extends Component {
             return result
         }
 
-        let shotPctArray = []
-
-        for(let i = 0; i < splits.length; i++){
-            if(splits[i].league.name === "National Hockey League") {
-                shotPctArray.push(splits[i].stat.shotPct)
-                shotPctResult += (splits[i].stat.shotPct)
-            } else{
-                shotPctResult += 0
-            }      
+        const shotPctFn = () => {
+            let shotPctArray = [];
+            for(let i = 0; i < splits.length; i++){
+                if(splits[i].league.name === "National Hockey League") {
+                    shotPctArray.push(splits[i].stat.shotPct)
+                    shotPctResult += (splits[i].stat.shotPct)
+                } else{
+                    shotPctResult += 0
+                }
+            } 
+            return shotPctArray.length
         }
 
+        if (!people) return null;
         return (
             loading ? <Spinner /> : (
-                
             <Fragment>
                 <div className="PlayerDetails container" style={{marginLeft:"auto", marginRight:"auto"}}>
                 <div className="row">
@@ -138,7 +108,7 @@ class SeasonStats extends Component {
                                 <td>{statResults(gsResult, "gamesStarted")}</td>
                                 <td>{statResults(winsResult, 'wins')}</td>
                                 <td>{statResults(lossesResult, 'losses')}</td>
-                                <td>--</td>
+                                <td>0</td>
                                 <td>{statResults(otResult, 'ot')}</td>
                                 <td>{statResults(saResult, 'shotsAgainst')}</td>
                                 <td>{statResults(gaResult, 'goalsAgainst')}</td>
@@ -204,7 +174,7 @@ class SeasonStats extends Component {
                                     <td>{statResults(shgResult, 'shortHandedGoals')}</td>
                                     <td>{statResults(gwgResult, 'gameWinningGoals')}</td>
                                     <td>{statResults(shotsResult, 'shots')}</td>
-                                    <td>{(shotPctResult/shotPctArray.length).toFixed(1)}</td>
+                                    <td>{(shotPctResult/shotPctFn()).toFixed(1)}</td>
                                 </tr>
                         </tbody>
                     </Table>
@@ -216,8 +186,4 @@ class SeasonStats extends Component {
     }
 }
 
-const mapStateToProps = state => { 
-    return { stats: state }; 
-};
-
-export default connect(mapStateToProps)(SeasonStats)
+export default SeasonStats

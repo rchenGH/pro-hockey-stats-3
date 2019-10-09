@@ -29,7 +29,7 @@ const App = () => {
   useEffect(() => {
     store.dispatch(loadUser());
   }, []);
-
+  
 
   return (
       <Provider store={ store }>
@@ -57,7 +57,7 @@ const App = () => {
                   />
                   <Route 
                     exact 
-                    path='/teams/:teamName/roster'
+                    path='/teams/:team/roster'
                     component={() => <TeamRosterDetails />}
                   />
                   <Route 

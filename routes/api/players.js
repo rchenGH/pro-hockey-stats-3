@@ -46,7 +46,6 @@ Promise.all(urls.map(url => fetch(url)))
         const linkName = name.split(" ").join("").toLowerCase();
         
         router.get(`/${linkTeamName}/roster/${linkName}`, (req, res) => { 
-            
             fetch(`https://statsapi.web.nhl.com/api/v1/people/${linkPlayerId[index]}?expand=person.stats&stats=yearByYear`)
                 .then(function(res){
                     return res.json().catch(err => console.log(err));

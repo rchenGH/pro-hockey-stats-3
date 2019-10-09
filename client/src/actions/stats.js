@@ -1,16 +1,20 @@
 import axios from 'axios';
 import { GET_TEAMS, GET_ROSTER, GET_PLAYER } from './types';
 
-export const getPlayer = (team, player) => async dispatch => {
-    try {
-        const res = await axios.get(`${player}`)
+export const getPlayer = (urlPath) => async dispatch => {
 
-        dispatch({
-            type: GET_PLAYER, 
-            payload: res.data,
-            team,
-            player
-        })
+    try {
+        await axios.get(urlPath)
+            .then((res) => {
+                console.log('res in actions ', res.data)
+                dispatch({
+                    type: GET_PLAYER, 
+                    payload: res.data,
+                })
+            }).catch((err) => {
+                console.log(err)
+            })
+
     } catch (err) {
         console.log(err)
     }
