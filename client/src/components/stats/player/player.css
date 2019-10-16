@@ -1,17 +1,20 @@
-/* .PlayerDetails{
+.player-details, .projection-details{
     margin-top: 150px;
     margin-left: 20px;
     margin-right: 20px;
-    min-height: 100vh;
     max-height: auto;
     width: auto;
     padding-left: 0px;
     padding-right: 0px;
     padding-bottom: 30px;
     background-color: rgba(59,59,59,1)
-  }
+}
+
+.player-details{
+    min-height: 100vh;
+}
   
-  .details-name{
+.details-name{
     color: rgba(59, 59, 59, 1);
     text-align: center;
     position: relative;
@@ -26,57 +29,55 @@
     border-top-right-radius: 5px;
     -webKit-transform: skewX(-25deg);
     background-color: rgba(255, 132, 59, 1);
-  }
+}
   
-   .table .season, .table .team, .table .age, .table .gp, .table .g, .table .a,
-  .table .pts, .table .plus_minus, .table .pim, .table .evg, .table .eva, 
-  .table .ppg, .table .ppa, .table .sh, .table .gw, .table .s, .table .s_percentage, 
-  .table .gs, .table .wins, .table .losses, .table .ties, .table .ot, .table .sa,
-  .table .ga, .table .gaa, .table .saves, .table .sv-pct, .table .toi {
-  
+.table .season, .table .team, .table .age, .table .gp, .table .g, .table .a,
+.table .pts, .table .plus_minus, .table .pim, .table .evg, .table .eva, 
+.table .ppg, .table .ppa, .table .sh, .table .gw, .table .s, .table .s_percentage, 
+.table .gs, .table .wins, .table .losses, .table .ties, .table .ot, .table .sa,
+.table .ga, .table .gaa, .table .saves, .table .sv-pct, .table .toi, .table .next-season,
+.table .projected-goals, .table .projected-assists, .table .projected-points, .table .projected-shots,
+.table .projected-shot-percentage{
     border-bottom-color: rgba(59,59,59,1);
     margin-right: auto;
     margin-left: auto;
     background-color: rgba(255, 132, 59, 1);
-  }
+}
 
-  .span-name{
-    -webKit-transform: skewX(100deg);
-  }
+
   
 
-  .season{
+.season{
     max-width: 150px;
     padding-top: 10px;
-  }
+}
   
-  #season{
+#season{
     background-color: rgba(255, 132, 59, 1);
-  }
+}
   
-  .note{
+.note{
     color: rgba(255,255,255,0.6);
     font-size: 14px;
-  }
+}
   
-  table .goalsper82, table .assistsper82, table .pointsper82{
+table .goalsper82, table .assistsper82, table .pointsper82{
     color: rgba(59,59,59,1)
-  }
+}
   
-   .table .next-season, .table .projected-goals, .table .projected-assists, .table .projected-points, .table .projected-shots, 
-   .table .projected-shot-percentage{
+.table .next-season, .table .projected-goals, .table .projected-assists, .table .projected-points, .table .projected-shots, 
+.table .projected-shot-percentage{
     color: rgba(59,59,59,1);
     border-color: rgba(59,59,59,1);
-    border-width: 2px;
     border-style: solid;
     background-color: rgba(255, 132, 59, 1);
-  }
+}
   
-  #projection-year{
+#projection-year{
     background-color: rgba(255, 132, 59, 1);
-  }
+}
   
-  .details-name, .show-projections{
+.details-name, .show-projections{
     color: rgba(59, 59, 59, 1);
     text-align: center;
     position: relative;
@@ -91,17 +92,21 @@
     border-top-right-radius: 5px;
     -webKit-transform: skewX(-25deg);
     background-color: rgba(255, 132, 59, 1);
-  }
+}
 
-  .season-row:hover{
+.span-name{
+    -webKit-transform: skewX(25deg);
+}
+
+.season-row:hover{
     animation-duration: 0.5s;
     animation-name: rowhover;
     animation-play-state: running;
     background-color: rgba(255, 80, 30, 0.7);
     animation-fill-mode: forwards;
-  }
+}
 
-  @keyframes rowhover{
+@keyframes rowhover{
     0% {
       -webKit-transform: translate3d(0, -10, -10);
       transform: scale(1);
@@ -110,5 +115,13 @@
       -webKit-transform: translate3d(0, 0, 0);
       transform: scale(1.06);
     }
-  }
-   */
+}
+  
+
+/* PROJECTIONS START */
+
+.projection-details{
+    margin-top: 75px;
+}
+
+/* PROJECTIONS END */

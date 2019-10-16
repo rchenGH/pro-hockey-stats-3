@@ -6,13 +6,13 @@ import Spinner from '../../layout/common/Spinner';
 import {getPlayer} from '../../../actions/stats';
 import axios from 'axios'
 import { get } from 'http';
-
+import '../player/player.css'
 
 class PlayerDetails extends Component {
 
     componentDidMount(){
         const { getPlayer } = this.props
-            getPlayer(window.location.pathname)
+        getPlayer(window.location.pathname)
     }
 
     render(){

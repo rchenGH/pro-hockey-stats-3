@@ -33,6 +33,7 @@ export default function(state = initialState, action){
                 currentTeam: payload.people[0].currentTeam,
                 primaryPositionType: payload.people[0].primaryPosition.type,
                 splits: payload.people[0].stats[0].splits,
+                leagueName: payload.people[0].stats[0].splits.leagueName,
                 loading: false,
                 team,
                 player

@@ -1,29 +1,21 @@
-import React, {Fragment, Component } from 'react'
-import { connect } from 'react-redux';
+import React, { Fragment } from 'react'
 import PropTypes from 'prop-types';
 import { Table } from 'reactstrap';
 import Spinner from '../../../layout/common/Spinner'
-import './seasonstats.css';
-import axios from 'axios'
 import toiStat from './statFunctions/toiStat';
 import toiTotal from './statFunctions/toiTotal';
 import splitYear from './statFunctions/splitYear';
+import ForwardProjections from '../forwardProjections/ForwardProjections';
 
-class SeasonStats extends Component {
+const SeasonStats = (props) => {
 
-    render() {
-
-
-
-        const { loading } = this.props.stats
-
-
-        const { splits, people, currentTeam, primaryPositionType} = this.props.stats;
+        const { loading } = props.stats
+        const { splits, people, currentTeam, primaryPositionType, leagueName} = props.stats;
 
         let [   gamesResult, goalsResult, assistsResult, pointsResult, pmResult, pimResult, 
                 ppgResult, pppResult, shgResult, gwgResult, shotsResult, shotPctResult,
                 gsResult, winsResult, lossesResult, otResult, saResult, gaResult, 
-                savesResult, toiResult, toiSeasonArray ] 
+                savesResult, toiResult, toiSeasonArray  ] 
                 = [ 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
                     0, 0, 0, 0, 0, 0, 0, 0, 0 ]
 
@@ -35,8 +27,10 @@ class SeasonStats extends Component {
             return result
         }
 
-        const shotPctFn = () => {
+        // const shotPctFn = () => {
             let shotPctArray = [];
+            
+            if (!splits) return null;
             for(let i = 0; i < splits.length; i++){
                 if(splits[i].league.name === "National Hockey League") {
                     shotPctArray.push(splits[i].stat.shotPct)
@@ -45,20 +39,22 @@ class SeasonStats extends Component {
                     shotPctResult += 0
                 }
             } 
-            return shotPctArray.length
-        }
+        //     return shotPctArray.length
+        // }
 
-        if (!people) return null;
+        console.log('splits ', splits)
+
+        if (!splits) return null;
         return (
             loading ? <Spinner /> : (
             <Fragment>
-                <div className="PlayerDetails container" style={{marginLeft:"auto", marginRight:"auto"}}>
+                <div className="player-details container" style={{marginLeft:"auto", marginRight:"auto"}}>
                 <div className="row">
                     <div className="details-name" style={{minWidth: "300px"}}>
-                        {currentTeam.name}
+                        <div className="span-name">{currentTeam.name}</div>
                     </div>
                     <div className="details-name" style={{minWidth: "300px"}}>
-                        {people.fullName}
+                        <div className="span-name">{people.fullName}</div>
                     </div>
                 </div>
                 {primaryPositionType === 'Goalie' ? 
@@ -120,6 +116,7 @@ class SeasonStats extends Component {
                         </tbody>
                     </Table> : 
 
+                    <Fragment>
                     <Table>
                         <thead>
                             <tr>
@@ -174,16 +171,17 @@ class SeasonStats extends Component {
                                     <td>{statResults(shgResult, 'shortHandedGoals')}</td>
                                     <td>{statResults(gwgResult, 'gameWinningGoals')}</td>
                                     <td>{statResults(shotsResult, 'shots')}</td>
-                                    <td>{(shotPctResult/shotPctFn()).toFixed(1)}</td>
+                                    <td>{((statResults(goalsResult, "goals")/statResults(shotsResult, 'shots'))*100).toFixed(1)}</td>
                                 </tr>
                         </tbody>
                     </Table>
+                    <ForwardProjections { ...props}/>
+                    </Fragment>
                 }
                 </div>
             </Fragment>
             )
         )
-    }
 }
 
 export default SeasonStats

@@ -8,7 +8,7 @@ import './teamrosterdetails.css';
 
 
 
-const TeamRosterDetails = ({getPlayer, stats}) =>{
+const TeamRosterDetails = ({stats}) =>{
 
     const { roster = [] } = stats.roster
 
@@ -89,9 +89,7 @@ const TeamRosterDetails = ({getPlayer, stats}) =>{
                                 <tr className="table-row" scope="row" key={player.person.id}>
                                     <td className="table-data">{player.jerseyNumber}</td>
                                     <td className="table-data full-name" >
-                                        <Link to={`${player.person.fullName.split(" ").join("").toLowerCase()}`} 
-                                            // onClick={ () => getPlayer(stats.team, player.person.fullName.split(" ").join("").toLowerCase()) }
-                                            >
+                                        <Link to={`${player.person.fullName.split(" ").join("").toLowerCase()}`} >
                                             {player.person.fullName}
                                         </Link>
                                     </td>
