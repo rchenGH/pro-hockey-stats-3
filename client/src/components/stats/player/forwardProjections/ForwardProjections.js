@@ -7,18 +7,12 @@ const ForwardProjections = (props) => {
 
     const { loading } = props.stats;
     const { splits, people, currentTeam, primaryPositionType} = props.stats;
+    const { shotsTotal } = props
 
-    let [   totalShots, totalGoals, totalAssists, totalGames, totalPoints ] = [0, 0, 0, 0];
+    console.log('shotsTotal ', shotsTotal)
 
-    // goals, points, assists, shots
+    // goals, points, assists, shots, age
 
-    const projectedPrimaryStats = (result, playerStat) => {
-        for(let i = 0; i < splits.length; i++){
-            splits[i].league.name === "National Hockey League" ? 
-            result += splits[i].stat[playerStat] : result += 0
-        }
-        return result
-    }
 
     console.log('people in forward projections ', people.currentAge)
 
@@ -46,11 +40,11 @@ const ForwardProjections = (props) => {
                     <tbody className="ProjectionsList">
                         <tr>
                             <td>--</td>
-                            <td>{projectedPrimaryStats(totalGoals ,'goals')}</td>
+                            {/* <td>{projectedPrimaryStats(totalGoals ,'goals')}</td>
                             <td>{projectedPrimaryStats(totalAssists, 'assists')}</td>
                             <td>{projectedPrimaryStats(totalPoints, 'points')}</td>
                             <td>{projectedPrimaryStats(totalShots, 'shots')}</td>
-                            <td>{(projectedPrimaryStats(totalGoals ,'goals')/projectedPrimaryStats(totalShots, 'shots')).toFixed(3)}</td>
+                            <td>{(projectedPrimaryStats(totalGoals ,'goals')/projectedPrimaryStats(totalShots, 'shots')).toFixed(3)}</td> */}
                         </tr>
                     </tbody>
                 </Table>

@@ -6,7 +6,6 @@ export const getPlayer = (urlPath) => async dispatch => {
     try {
         await axios.get(urlPath)
             .then((res) => {
-                console.log('res in actions ', res.data)
                 dispatch({
                     type: GET_PLAYER, 
                     payload: res.data,

@@ -42,7 +42,33 @@ const SeasonStats = (props) => {
         //     return shotPctArray.length
         // }
 
-        console.log('splits ', splits)
+        // All Players
+        let gamesTotal = statResults(gamesResult, "games");
+
+        // All skaters total
+        let goalsTotal = statResults(goalsResult, "goals");
+        let assistsTotal = statResults(assistsResult, "assists");
+        let pointsTotal = statResults(pointsResult, 'points');
+        let plusMinusTotal = statResults(pmResult, 'plusMinus');
+        let pimTotal = statResults(pimResult, 'pim');
+        let ppgTotal = statResults(ppgResult, 'powerPlayGoals');
+        let pppTotal = statResults(pppResult, 'powerPlayPoints');
+        let shgTotal = statResults(shgResult, 'shortHandedGoals');
+        let gwgTotal = statResults(gwgResult, 'gameWinningGoals');
+        let shotsTotal = statResults(shotsResult, 'shots');
+        let shotPctTotal = ((statResults(goalsResult, "goals")/statResults(shotsResult, 'shots'))*100).toFixed(1);
+
+        // Goalie totals
+        let gamesStartedTotal = statResults(gsResult, "gamesStarted");
+        let winsTotal = statResults(winsResult, 'wins');
+        let lossesTotal = statResults(lossesResult, 'losses');
+        let otTotal = statResults(otResult, 'ot');
+        let shotsAgainstTotal = statResults(saResult, 'shotsAgainst');
+        let goalsAgainstTotal = statResults(gaResult, 'goalsAgainst');
+        let gaaTotal = ((statResults(gaResult, 'goalsAgainst') * 60) / toiTotal(toiResult, splits)).toFixed(2);
+        let savesTotal = statResults(savesResult, 'saves');
+        let savePctTotal = (statResults(savesResult, 'saves')/statResults(saResult, 'shotsAgainst')).toFixed(3);
+        let timeOnIceTotal = toiTotal(toiResult, splits).toFixed(0)
 
         if (!splits) return null;
         return (
@@ -50,12 +76,10 @@ const SeasonStats = (props) => {
             <Fragment>
                 <div className="player-details container" style={{marginLeft:"auto", marginRight:"auto"}}>
                 <div className="row">
-                    <div className="details-name" style={{minWidth: "300px"}}>
-                        <div className="span-name">{currentTeam.name}</div>
+                    <div className="details-name" style={{minWidth: "300px", width: "600px"}}>
+                        <div className="span-name">{currentTeam.name} | {people.fullName} | Age: {people.currentAge}</div>
                     </div>
-                    <div className="details-name" style={{minWidth: "300px"}}>
-                        <div className="span-name">{people.fullName}</div>
-                    </div>
+
                 </div>
                 {primaryPositionType === 'Goalie' ? 
                     <Table>
@@ -100,18 +124,18 @@ const SeasonStats = (props) => {
                             <tr>
                                 <td>Totals</td>
                                 <td>--</td>
-                                <td>{statResults(gamesResult, "games")}</td>
-                                <td>{statResults(gsResult, "gamesStarted")}</td>
-                                <td>{statResults(winsResult, 'wins')}</td>
-                                <td>{statResults(lossesResult, 'losses')}</td>
+                                <td>{gamesTotal}</td>
+                                <td>{gamesStartedTotal}</td>
+                                <td>{winsTotal}</td>
+                                <td>{lossesTotal}</td>
                                 <td>0</td>
-                                <td>{statResults(otResult, 'ot')}</td>
-                                <td>{statResults(saResult, 'shotsAgainst')}</td>
-                                <td>{statResults(gaResult, 'goalsAgainst')}</td>
-                                <td>{((statResults(gaResult, 'goalsAgainst') * 60) / toiTotal(toiResult, splits)).toFixed(2)}</td>
-                                <td>{statResults(savesResult, 'saves')}</td>
-                                <td>{(statResults(savesResult, 'saves')/statResults(saResult, 'shotsAgainst')).toFixed(3)}</td>
-                                <td>{toiTotal(toiResult, splits).toFixed(0)}</td>
+                                <td>{otTotal}</td>
+                                <td>{shotsAgainstTotal}</td>
+                                <td>{goalsAgainstTotal}</td>
+                                <td>{gaaTotal}</td>
+                                <td>{savesTotal}</td>
+                                <td>{savePctTotal}</td>
+                                <td>{timeOnIceTotal}</td>
                             </tr>
                         </tbody>
                     </Table> : 
@@ -160,22 +184,28 @@ const SeasonStats = (props) => {
                                 <tr>
                                     <td>Totals</td>
                                     <td>--</td>
-                                    <td>{statResults(gamesResult, "games")}</td>
-                                    <td>{statResults(goalsResult, "goals")}</td>
-                                    <td>{statResults(assistsResult, "assists")}</td>
-                                    <td>{statResults(pointsResult, 'points')}</td>
-                                    <td>{statResults(pmResult, 'plusMinus')}</td>
-                                    <td>{statResults(pimResult, 'pim')}</td>
-                                    <td>{statResults(ppgResult, 'powerPlayGoals')}</td>
-                                    <td>{statResults(pppResult, 'powerPlayPoints')}</td>
-                                    <td>{statResults(shgResult, 'shortHandedGoals')}</td>
-                                    <td>{statResults(gwgResult, 'gameWinningGoals')}</td>
-                                    <td>{statResults(shotsResult, 'shots')}</td>
-                                    <td>{((statResults(goalsResult, "goals")/statResults(shotsResult, 'shots'))*100).toFixed(1)}</td>
+                                    <td>{gamesTotal}</td>
+                                    <td>{goalsTotal}</td>
+                                    <td>{assistsTotal}</td>
+                                    <td>{pointsTotal}</td>
+                                    <td>{plusMinusTotal}</td>
+                                    <td>{pimTotal}</td>
+                                    <td>{ppgTotal}</td>
+                                    <td>{pppTotal}</td>
+                                    <td>{shgTotal}</td>
+                                    <td>{gwgTotal}</td>
+                                    <td>{shotsTotal}</td>
+                                    <td>{shotPctTotal}</td>
                                 </tr>
                         </tbody>
                     </Table>
-                    <ForwardProjections { ...props}/>
+                    <ForwardProjections 
+                        { ...props} 
+                        shotsTotal={shotsTotal}
+                        goalsTotal={goalsTotal}
+                        assistsTotal={assistsTotal}
+                        pointsTotal={pointsTotal}
+                    />
                     </Fragment>
                 }
                 </div>

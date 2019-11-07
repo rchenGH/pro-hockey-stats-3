@@ -14,14 +14,14 @@
     min-height: 100vh;
 }
   
-.details-name{
+/* .details-name{
     color: rgba(59, 59, 59, 1);
     text-align: center;
     position: relative;
     font-size: 24px;
     font-weight: normal;
     width: auto;
-    max-width: 300px;
+    max-width: 600px;
     padding-top: 10px;
     padding-bottom: 10px;
     margin-left: 15px;
@@ -29,7 +29,7 @@
     border-top-right-radius: 5px;
     -webKit-transform: skewX(-25deg);
     background-color: rgba(255, 132, 59, 1);
-}
+} */
   
 .table .season, .table .team, .table .age, .table .gp, .table .g, .table .a,
 .table .pts, .table .plus_minus, .table .pim, .table .evg, .table .eva, 
@@ -84,7 +84,7 @@ table .goalsper82, table .assistsper82, table .pointsper82{
     font-size: 24px;
     font-weight: normal;
     width: auto;
-    max-width: 300px;
+    max-width: 600px;
     padding-top: 10px;
     padding-bottom: 10px;
     margin-left: 15px;
