@@ -205,6 +205,7 @@ const SeasonStats = (props) => {
                         goalsTotal={goalsTotal}
                         assistsTotal={assistsTotal}
                         pointsTotal={pointsTotal}
+                        gamesTotal={gamesTotal}
                     />
                     </Fragment>
                 }
