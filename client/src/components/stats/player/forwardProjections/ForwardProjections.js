@@ -1,5 +1,4 @@
 import React, { Fragment } from 'react'
-import PropTypes from 'prop-types';
 import { Table } from 'reactstrap';
 import Spinner from '../../../layout/common/Spinner';
 import ageProjection from '../forwardProjections/projectionFunctions/ageProjection';

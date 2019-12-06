@@ -1,5 +1,4 @@
 import React, { useEffect } from 'react';
-import { connect } from 'react-redux';
 import NavigationBar from './components/layout/navigation/Navigation';
 import {BrowserRouter as Router, Route, Switch } from 'react-router-dom'
 import Home from './components/home/Home';

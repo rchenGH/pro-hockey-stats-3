@@ -1,6 +1,5 @@
-import React, { Fragment } from 'react';
-import PropTypes from 'prop-types';
-import {Bar, Line, Pie} from 'react-chartjs-2';
+import React from 'react';
+import Bar from 'react-chartjs-2';
 import ageProjection from '../forwardProjections/projectionFunctions/ageProjection';
 import './chart.css';
 import splitYear from '../../player/seasonStats/statFunctions/splitYear'

@@ -1,15 +1,13 @@
 import React, {Component} from 'react';
 import { connect } from 'react-redux';
-import playerbackground from './hockey-player-background.png'
-import downarrow from './down-arrow.svg'
-import uparrow from './up-arrow.svg'
+// import downarrow from './down-arrow.svg'
+// import uparrow from './up-arrow.svg'
 import './home.css'
 
 class Home extends Component {
-  constructor(props){
-    super(props);
-
-  }
+  // constructor(props){
+  //   super(props);
+  // }
 
   render(){
 

@@ -1,5 +1,4 @@
 import React, { Fragment } from 'react'
-import PropTypes from 'prop-types';
 import { Table } from 'reactstrap';
 import Spinner from '../../../layout/common/Spinner'
 import toiStat from './statFunctions/toiStat';
@@ -10,10 +9,10 @@ import ForwardProjections from '../forwardProjections/ForwardProjections';
 const SeasonStats = (props) => {
 
         const { loading } = props.stats
-        const { splits, people, currentTeam, primaryPositionType, leagueName} = props.stats;
+        const { splits, people, currentTeam, primaryPositionType } = props.stats;
 
         let [   gamesResult, goalsResult, assistsResult, pointsResult, pmResult, pimResult, 
-                ppgResult, pppResult, shgResult, gwgResult, shotsResult, shotPctResult,
+                ppgResult, pppResult, shgResult, gwgResult, shotsResult,
                 gsResult, winsResult, lossesResult, otResult, saResult, gaResult, 
                 savesResult, toiResult, toiSeasonArray  ] 
                 = [ 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,

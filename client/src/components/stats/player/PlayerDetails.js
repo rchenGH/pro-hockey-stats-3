@@ -2,10 +2,7 @@ import React, {Fragment, Component } from 'react'
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 import SeasonStats from './seasonStats/SeasonStats';
-import Spinner from '../../layout/common/Spinner';
 import {getPlayer} from '../../../actions/stats';
-import axios from 'axios'
-import { get } from 'http';
 import '../player/player.css'
 
 class PlayerDetails extends Component {
