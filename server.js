@@ -3,7 +3,7 @@ const express = require("express");
 const bodyParser = require('body-parser');
 const mongoose = require('mongoose');
 const app = express();
-const path = reuqire('path')
+const path = require('path')
 
 // DB Config
 const db = require('./config/keys').mongoURI;
