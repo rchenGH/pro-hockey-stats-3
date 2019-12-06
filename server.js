@@ -3,6 +3,7 @@ const express = require("express");
 const bodyParser = require('body-parser');
 const mongoose = require('mongoose');
 const app = express();
+const path = reuqire('path')
 
 // DB Config
 const db = require('./config/keys').mongoURI;
@@ -20,6 +21,16 @@ app.use('/api/profile', require('./routes/api/profile'));
 app.use('/teams',  require('./routes/api/teams'));
 app.use('/teams',  require('./routes/api/rosters'));
 app.use('/teams',  require('./routes/api/players'));
+
+// Serve static assets in production
+if(process.env.NODE_ENV === 'production'){
+  // Set static folder
+  app.use(express.static('client/build'));
+
+  app.get('*', (req, res) => {
+    res.sendFile(path.resolve(__dirname, 'client', 'build'))
+  })
+}
 
 mongoose
   .connect(db, {

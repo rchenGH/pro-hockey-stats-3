@@ -7,11 +7,7 @@ import splitYear from '../../player/seasonStats/statFunctions/splitYear'
 
 function ForwardCharts (props){
 
-    let seasonsArray = [];
-    let pointsArray = [];
-    let colorArray1 = [];
-    let colorArray2 = [];
-    let ppgaArray = [];
+    let [seasonsArray, pointsArray, colorArray1, colorArray2, ppgaArray] = [[], [], [], [], [], []]
 
     const { shotsTotal, goalsTotal, assistsTotal, gamesTotal, currentAge, pointsPer82, splits } = props
 
@@ -33,15 +29,15 @@ function ForwardCharts (props){
         (split.league.name === "National Hockey League" ? pointsArray.push(split.stat.points) : null)
     )
 
-    splits.map((split, index) => 
+    splits.map(split => 
         (split.league.name === "National Hockey League" ? ppgaArray.push((split.stat.points/split.stat.games).toFixed(2)) : null)
     )
 
-    splits.map((split, index) => 
+    splits.map(split => 
         (split.league.name === "National Hockey League" ? colorArray1.push('rgba(240, 180, 80, 0.8)') : null)
     )
 
-    splits.map((split, index) => 
+    splits.map(split => 
         (split.league.name === "National Hockey League" ? colorArray2.push('rgba(180, 120, 50, 0.8)') : null)
     )
 
