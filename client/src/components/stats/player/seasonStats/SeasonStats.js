@@ -19,6 +19,7 @@ const SeasonStats = (props) => {
                 = [ 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
                     0, 0, 0, 0, 0, 0, 0, 0, 0 ]
 
+
         const statResults = (result, playerStat) => {
             for(let i = 0; i < splits.length; i++){
                 splits[i].league.name === "National Hockey League" ?
@@ -27,7 +28,6 @@ const SeasonStats = (props) => {
             return result
         }
 
-        // const shotPctFn = () => {
             let shotPctArray = [];
             
             if (!splits) return null;
@@ -39,8 +39,8 @@ const SeasonStats = (props) => {
                     shotPctResult += 0
                 }
             } 
-        //     return shotPctArray.length
-        // }
+
+
 
         // All Players
         let gamesTotal = statResults(gamesResult, "games");
@@ -70,6 +70,7 @@ const SeasonStats = (props) => {
         let savePctTotal = (statResults(savesResult, 'saves')/statResults(saResult, 'shotsAgainst')).toFixed(3);
         let timeOnIceTotal = toiTotal(toiResult, splits).toFixed(0)
 
+            
         if (!splits) return null;
         return (
             loading ? <Spinner /> : (
@@ -141,72 +142,71 @@ const SeasonStats = (props) => {
                     </Table> : 
 
                     <Fragment>
-                    <Table>
-                        <thead>
-                            <tr>
-                                <th className="season">SEASON</th>
-                                <th className="team">TEAM</th>
-                                <th className="gp">GP</th>
-                                <th className="g">G</th>
-                                <th className="a">A</th>
-                                <th className="pts">PTS</th>
-                                <th className="plus_minus">+/-</th>
-                                <th className="pim">PIM</th>
-                                <th className="ppg">PPG</th>
-                                <th className="ppa">PPP</th>
-                                <th className="sh">SHG</th>
-                                <th className="gw">GWG</th>
-                                <th className="s">S</th>
-                                <th className="s_percentage">S%</th>
-                            </tr>
-                        </thead>
-                        <tbody>            
-                            {splits.map((split, index) => 
-                                ( split.league.name === "National Hockey League" ?
-                                <tr key={index} className="season-row">
-                                    <td className="season">{splitYear(split.season)}</td>
-                                    <td>{split.team.name}</td>
-                                    <td>{split.stat.games}</td>
-                                    <td>{split.stat.goals}</td>
-                                    <td>{split.stat.assists}</td>
-                                    <td>{split.stat.points}</td>
-                                    <td>{split.stat.plusMinus}</td>
-                                    <td>{split.stat.pim}</td>
-                                    <td>{split.stat.powerPlayGoals}</td>
-                                    <td>{split.stat.powerPlayPoints}</td>
-                                    <td>{split.stat.shortHandedGoals}</td>
-                                    <td>{split.stat.gameWinningGoals}</td>
-                                    <td>{split.stat.shots}</td>
-                                    <td>{split.stat.shotPct}</td>
-                                </tr>
-                                : null )
-                            )}
+                        <Table>
+                            <thead>
                                 <tr>
-                                    <td>Totals</td>
-                                    <td>--</td>
-                                    <td>{gamesTotal}</td>
-                                    <td>{goalsTotal}</td>
-                                    <td>{assistsTotal}</td>
-                                    <td>{pointsTotal}</td>
-                                    <td>{plusMinusTotal}</td>
-                                    <td>{pimTotal}</td>
-                                    <td>{ppgTotal}</td>
-                                    <td>{pppTotal}</td>
-                                    <td>{shgTotal}</td>
-                                    <td>{gwgTotal}</td>
-                                    <td>{shotsTotal}</td>
-                                    <td>{shotPctTotal}</td>
+                                    <th className="season">SEASON</th>
+                                    <th className="team">TEAM</th>
+                                    <th className="gp">GP</th>
+                                    <th className="g">G</th>
+                                    <th className="a">A</th>
+                                    <th className="pts">PTS</th>
+                                    <th className="plus_minus">+/-</th>
+                                    <th className="pim">PIM</th>
+                                    <th className="ppg">PPG</th>
+                                    <th className="ppa">PPP</th>
+                                    <th className="sh">SHG</th>
+                                    <th className="gw">GWG</th>
+                                    <th className="s">S</th>
+                                    <th className="s_percentage">S%</th>
                                 </tr>
-                        </tbody>
-                    </Table>
-                    <ForwardProjections 
-                        { ...props} 
-                        shotsTotal={shotsTotal}
-                        goalsTotal={goalsTotal}
-                        assistsTotal={assistsTotal}
-                        pointsTotal={pointsTotal}
-                        gamesTotal={gamesTotal}
-                    />
+                            </thead>
+                            <tbody>            
+                                {splits.map((split, index) => 
+                                    ( split.league.name === "National Hockey League" ?
+                                    <tr key={index} className="season-row">
+                                        <td className="season">{splitYear(split.season)}</td>
+                                        <td>{split.team.name}</td>
+                                        <td>{split.stat.games}</td>
+                                        <td>{split.stat.goals}</td>
+                                        <td>{split.stat.assists}</td>
+                                        <td>{split.stat.points}</td>
+                                        <td>{split.stat.plusMinus}</td>
+                                        <td>{split.stat.pim}</td>
+                                        <td>{split.stat.powerPlayGoals}</td>
+                                        <td>{split.stat.powerPlayPoints}</td>
+                                        <td>{split.stat.shortHandedGoals}</td>
+                                        <td>{split.stat.gameWinningGoals}</td>
+                                        <td>{split.stat.shots}</td>
+                                        <td>{split.stat.shotPct}</td>
+                                    </tr>
+                                    : null )
+                                )}
+                                    <tr>
+                                        <td>Totals</td>
+                                        <td>--</td>
+                                        <td>{gamesTotal}</td>
+                                        <td>{goalsTotal}</td>
+                                        <td>{assistsTotal}</td>
+                                        <td>{pointsTotal}</td>
+                                        <td>{plusMinusTotal}</td>
+                                        <td>{pimTotal}</td>
+                                        <td>{ppgTotal}</td>
+                                        <td>{pppTotal}</td>
+                                        <td>{shgTotal}</td>
+                                        <td>{gwgTotal}</td>
+                                        <td>{shotsTotal}</td>
+                                        <td>{shotPctTotal}</td>
+                                    </tr>
+                            </tbody>
+                        </Table>
+                        <ForwardProjections 
+                            { ...props} 
+                            shotsTotal={shotsTotal}
+                            goalsTotal={goalsTotal}
+                            assistsTotal={assistsTotal}
+                            gamesTotal={gamesTotal}
+                        />
                     </Fragment>
                 }
                 </div>

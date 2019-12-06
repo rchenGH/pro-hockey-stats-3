@@ -2,17 +2,17 @@ import React, { Fragment } from 'react'
 import PropTypes from 'prop-types';
 import { Table } from 'reactstrap';
 import Spinner from '../../../layout/common/Spinner';
+import ageProjection from '../forwardProjections/projectionFunctions/ageProjection';
+import ForwardCharts from './FowardCharts';
 
 const ForwardProjections = (props) => {
 
+
     const { loading } = props.stats;
-    const { splits, people, currentTeam, primaryPositionType} = props.stats;
-    const { shotsTotal, goalsTotal, assistsTotal, pointsTotal, gamesTotal } = props
+    const { splits, people, primaryPositionType} = props.stats;
+    const { shotsTotal, goalsTotal, assistsTotal, gamesTotal } = props
 
     // goals, points, assists, shots, age
-
-
-    console.log('current age ', people.currentAge)
   
     let averageShotPercentage = goalsTotal/shotsTotal;
     let averageShotsPerSeason = shotsTotal/gamesTotal;
@@ -24,19 +24,7 @@ const ForwardProjections = (props) => {
 
     let pointsPer82 = (goalsPer82 + assistsPer82)
     
-    let avgShotPercentage = averageShotPercentage*100
-    let pointsPer82Projection
-
-    if(people.currentAge < 28){
-        pointsPer82Projection = pointsPer82 * 1.05
-    } else if ( people.currentAge === 30) {
-        pointsPer82Projection = pointsPer82
-    } else if (people.currentAge > 31 && people.currentAge <34){
-    pointsPer82Projection =  pointsPer82 * 0.97
-    } else {
-    pointsPer82Projection =  pointsPer82 * 0.95
-    }
-    
+    let avgShotPercentage = averageShotPercentage*100    
 
     return (
         loading ? <Spinner/> : (
@@ -64,13 +52,23 @@ const ForwardProjections = (props) => {
                             <td>--</td>
                             <td>{goalsPer82.toFixed(2)}</td>
                             <td>{assistsPer82.toFixed(2)}</td>
-                            <td>{pointsPer82Projection.toFixed(2)}</td>
+                            <td>{ageProjection(people.currentAge, pointsPer82).toFixed(2)}</td>
                             <td>{shotsPer82.toFixed(2)}</td>
                             <td>{avgShotPercentage.toFixed(2)}</td>
                         </tr>
                     </tbody>
                 </Table>
             </div>
+            <ForwardCharts
+                currentAge={people.currentAge}
+                splits={splits}
+                shotsTotal={shotsTotal}
+                goalsTotal={goalsTotal}
+                assistsTotal={assistsTotal}
+                gamesTotal={gamesTotal}
+                shotsTotal={shotsTotal}
+                pointsPer82={pointsPer82}
+            />
         </Fragment>
         )
     )
