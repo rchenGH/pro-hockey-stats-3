@@ -12,7 +12,7 @@ const SeasonStats = (props) => {
         const { splits, people, currentTeam, primaryPositionType } = props.stats;
 
         let [   gamesResult, goalsResult, assistsResult, pointsResult, pmResult, pimResult, 
-                ppgResult, pppResult, shgResult, gwgResult, shotsResult,
+                ppgResult, pppResult, shgResult, gwgResult, shotsResult, shotPctResult,
                 gsResult, winsResult, lossesResult, otResult, saResult, gaResult, 
                 savesResult, toiResult, toiSeasonArray  ] 
                 = [ 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
