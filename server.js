@@ -3,10 +3,14 @@ const express = require("express");
 const bodyParser = require('body-parser');
 const mongoose = require('mongoose');
 const app = express();
-const path = require('path')
+const path = require('path');
+const dotenv = require("dotenv");
 
 // DB Config
 const db = require('./config/keys').mongoURI;
+
+
+dotenv.config();
 
 // Init Middleware
 app.use(express.json({extended: false}));
@@ -23,11 +27,12 @@ app.use('/teams',  require('./routes/api/rosters'));
 app.use('/teams',  require('./routes/api/players'));
 
 
+
 mongoose
   .connect(db, {
     useNewUrlParser: true,
     useUnifiedTopology: true
-  })
+    })
   .then(() => console.log('MongoDB connected'))
   .catch(err => console.log(err));
 

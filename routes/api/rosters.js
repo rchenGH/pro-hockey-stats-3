@@ -32,31 +32,31 @@ Promise.all(urls.map(url => fetch(url)))
 // @desc    Get all teams
 // @access  Public
 
-        router.get(`/${linkTeamName}/roster`, (req, res) => {            
-            res.json(result[i+2]);
+router.get(`/${linkTeamName}/roster`, (req, res) => {            
+    res.json(result[i+2]);
 
-            Roster.find().then(team => {
-            
-            })
-                fetch(`https://statsapi.web.nhl.com/api/v1/teams/${i}/roster`)
-                    .then(function(res) {
-                        return res.json().catch(err => console.log(err));
-                    }).catch(err => console.log(err))
-                    .then(function(roster) {
-                        const rosterField = {};
-                        Roster.find().then(team => {
-                            if(isEmpty(team)){
+    Roster.find().then(team => {
+    
+    })
+        fetch(`https://statsapi.web.nhl.com/api/v1/teams/${i}/roster`)
+            .then(function(res) {
+                return res.json().catch(err => console.log(err));
+            }).catch(err => console.log(err))
+            .then(function(roster) {
+                const rosterField = {};
+                Roster.find().then(team => {
+                    if(isEmpty(team)){
 
-                                for(let i = 0; i < roster.roster.length; i++){
+                        for(let i = 0; i < roster.roster.length; i++){
 
-                                    if(roster.roster[i].person.id){ rosterField.id = roster.roster[i].person.id }
-                                    if(roster.roster[i].person.fullName){ rosterField.fullName = roster.roster[i].person.fullName }
+                            if(roster.roster[i].person.id){ rosterField.id = roster.roster[i].person.id }
+                            if(roster.roster[i].person.fullName){ rosterField.fullName = roster.roster[i].person.fullName }
 
-                                    new Roster(rosterField).save().catch(err => err)
-                                }
-                            }
-                        }).catch(err => console.log(err))
-                    }).catch(err => console.log('error in rosters api ', err));
+                            new Roster(rosterField).save().catch(err => err)
+                        }
+                    }
+                }).catch(err => console.log(err))
+            }).catch(err => console.log('error in rosters api ', err));
         })
     }
 }).catch(err => console.log(err))
