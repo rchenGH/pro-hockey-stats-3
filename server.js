@@ -33,8 +33,13 @@ mongoose
     useNewUrlParser: true,
     useUnifiedTopology: true
     })
-  .then(() => console.log('MongoDB connected'))
-  .catch(err => console.log(err));
+  // .then(() => console.log('MongoDB connected'))
+  // .catch(err => console.log(err));
+  mongoose.connection.once('open', function(){
+    console.log('Conection has been made!');
+        }).on('error', function(error){
+     console.log('Error is: ', error);
+      });
 
   mongoose.set('useCreateIndex', true)
   
