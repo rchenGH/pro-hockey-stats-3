@@ -8,7 +8,7 @@ const path = require('path')
 require("dotenv").config()
 
 // DB Config
-const db = require('./config/keys').mongoURI;
+// const db = require('./config/keys').mongoURI;
 
 
 // Init Middleware
