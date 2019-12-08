@@ -8,7 +8,7 @@ const path = require('path')
 require("dotenv").config()
 
 // DB Config
-// const db = require('./config/keys').mongoURI;
+const db = require('./config/keys').mongoURI;
 
 
 // Init Middleware
@@ -26,15 +26,22 @@ app.use('/teams',  require('./routes/api/rosters'));
 app.use('/teams',  require('./routes/api/players'));
 
 
-mongoose
-  .connect(process.env.mongoURI, {
-    useNewUrlParser: true,
-    useUnifiedTopology: true
-  })
-  .then(() => console.log('MongoDB connected'))
-  .catch(err => console.log(err));
+// mongoose
+//   .connect(process.env.mongoURI, {
+//     useNewUrlParser: true,
+//     useUnifiedTopology: true
+//   })
+//   .then(() => console.log('MongoDB connected'))
+//   .catch(err => console.log(err));
 
-  mongoose.set('useCreateIndex', true)
+  mongoose.connect(process.env.mongoURI, {useNewUrlParser: true});
+         mongoose.connection.once('open', function(){
+         console.log('Conection has been made!');
+             }).on('error', function(error){
+          console.log('Error is: ', error);
+           });
+
+  mongoose.set('useCreateIndex', true);
 
   
 // Body parser middleware
