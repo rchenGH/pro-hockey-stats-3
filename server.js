@@ -23,7 +23,7 @@ app.use('/teams',  require('./routes/api/players'));
 
 // Connect Database
 connectDB();
-  mongoose.set('useCreateIndex', true);
+mongoose.set('useCreateIndex', true);
 
   
 // Body parser middleware
