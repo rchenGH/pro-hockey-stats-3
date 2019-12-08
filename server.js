@@ -6,11 +6,6 @@ const app = express();
 const path = require('path');
 const connectDB = require('./config/db')
 
-require("dotenv").config()
-
-// DB Config
-const db = require('./config/keys').mongoURI;
-
 
 // Init Middleware
 app.use(express.json({extended: false}));
@@ -26,18 +21,8 @@ app.use('/teams',  require('./routes/api/teams'));
 app.use('/teams',  require('./routes/api/rosters'));
 app.use('/teams',  require('./routes/api/players'));
 
-
-// mongoose
-//   .connect(process.env.mongoURI, {
-//     useNewUrlParser: true,
-//     useUnifiedTopology: true
-//   })
-//   .then(() => console.log('MongoDB connected'))
-//   .catch(err => console.log(err));
-
 // Connect Database
-console.log('conenct db ', connectDB())
-
+connectDB();
   mongoose.set('useCreateIndex', true);
 
   
