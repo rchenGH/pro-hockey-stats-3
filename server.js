@@ -36,11 +36,6 @@ mongoose
 
   mongoose.set('useCreateIndex', true)
 
-  // console.log('process env ', process.env.SECRET_MESSAGE)
-  // console.log('process env ', process.env.mongoURI)
-  // console.log('process env ', process.env.jwtSecret)
-
-
   
 // Body parser middleware
 app.use(bodyParser.urlencoded({extended: true}));
