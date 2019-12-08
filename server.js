@@ -3,7 +3,8 @@ const express = require("express");
 const bodyParser = require('body-parser');
 const mongoose = require('mongoose');
 const app = express();
-const path = require('path')
+const path = require('path');
+const connectDB = require('./config/db')
 
 require("dotenv").config()
 
@@ -34,12 +35,8 @@ app.use('/teams',  require('./routes/api/players'));
 //   .then(() => console.log('MongoDB connected'))
 //   .catch(err => console.log(err));
 
-  mongoose.connect(process.env.mongoURI, {useNewUrlParser: true});
-         mongoose.connection.once('open', function(){
-         console.log('Conection has been made!');
-             }).on('error', function(error){
-          console.log('Error is: ', error);
-           });
+// Connect Database
+console.log('conenct db ', connectDB())
 
   mongoose.set('useCreateIndex', true);
 
