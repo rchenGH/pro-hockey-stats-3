@@ -3,14 +3,13 @@ const express = require("express");
 const bodyParser = require('body-parser');
 const mongoose = require('mongoose');
 const app = express();
-const path = require('path');
-const dotenv = require("dotenv");
+const path = require('path')
+
+require("dotenv").config()
 
 // DB Config
 const db = require('./config/keys').mongoURI;
 
-
-dotenv.config();
 
 // Init Middleware
 app.use(express.json({extended: false}));
@@ -27,21 +26,21 @@ app.use('/teams',  require('./routes/api/rosters'));
 app.use('/teams',  require('./routes/api/players'));
 
 
-
 mongoose
-  .connect(db, {
+  .connect(process.env.mongoURI, {
     useNewUrlParser: true,
     useUnifiedTopology: true
-    })
-  // .then(() => console.log('MongoDB connected'))
-  // .catch(err => console.log(err));
-  mongoose.connection.once('open', function(){
-    console.log('Conection has been made!');
-        }).on('error', function(error){
-     console.log('Error is: ', error);
-      });
+  })
+  .then(() => console.log('MongoDB connected'))
+  .catch(err => console.log(err));
 
   mongoose.set('useCreateIndex', true)
+
+  // console.log('process env ', process.env.SECRET_MESSAGE)
+  // console.log('process env ', process.env.mongoURI)
+  // console.log('process env ', process.env.jwtSecret)
+
+
   
 // Body parser middleware
 app.use(bodyParser.urlencoded({extended: true}));
