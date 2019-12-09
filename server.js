@@ -35,11 +35,6 @@ if(process.env.NODE_ENV === 'production'){
   app.use(express.static(path.join(__dirname, "client", "build")))
 
   app.get('*', (req, res) => {
-    Router.run(routes, req.path, function (Handler, state) {
-      var element = React.createElement(Handler);
-      var html = React.renderToString(element);
-      res.render('main', { content: html });
-  });
     // res.sendFile(path.resolve(__dirname, 'client', 'build', 'index.html'));
     res.sendFile(path.join(__dirname, 'client', 'build', 'index.html'));
 
