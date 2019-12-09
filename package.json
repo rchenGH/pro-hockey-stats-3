@@ -7,7 +7,7 @@
   "description": "hockey stat projection app",
   "main": "server.js",
   "scripts": {
-    "start": "webpack-dev-server --inline --content-base . --history-api-fallback",
+    "start": "node server",
     "server": "nodemon server",
     "client": "npm start --prefix client",
     "dev": "concurrently \"npm run server\" \"npm run client\"",
@@ -38,9 +38,7 @@
     "mongoose": "^5.6.9",
     "node-fetch": "^2.6.0",
     "popper.js": "^1.16.0",
-    "postcss-reduce-initial": "^4.0.3",
-    "webpack": "^4.41.2",
-    "webpack-dev-server": "^3.9.0"
+    "postcss-reduce-initial": "^4.0.3"
   },
   "devDependencies": {
     "concurrently": "^4.1.1",
