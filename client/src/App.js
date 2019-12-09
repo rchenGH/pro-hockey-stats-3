@@ -1,6 +1,6 @@
 import React, { useEffect } from 'react';
 import NavigationBar from './components/layout/navigation/Navigation';
-import {BrowserRouter as Router, Route, Switch } from 'react-router-dom'
+import {Route, Switch } from 'react-router-dom'
 import Home from './components/home/Home';
 import Register from './components/auth/Register';
 import Login from './components/auth/Login';
@@ -32,7 +32,7 @@ const App = () => {
 
   return (
       <Provider store={ store }>
-        <Router>
+        {/* <Router> */}
           <div className="App hockey-background"
               style={{backgroundColor: "rgba(59,59,59,1)", paddingTop:'5px', width: '100vw'}}
               >
@@ -83,7 +83,7 @@ const App = () => {
           </div>
           <Footer/>
 
-        </Router>
+        {/* </Router> */}
       </Provider>
   )}
 
