@@ -38,7 +38,8 @@
     "mongoose": "^5.6.9",
     "node-fetch": "^2.6.0",
     "popper.js": "^1.16.0",
-    "postcss-reduce-initial": "^4.0.3"
+    "postcss-reduce-initial": "^4.0.3",
+    "request": "^2.88.0"
   },
   "devDependencies": {
     "concurrently": "^4.1.1",
