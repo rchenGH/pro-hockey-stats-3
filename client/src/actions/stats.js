@@ -21,7 +21,7 @@ export const getPlayer = (urlPath) => async dispatch => {
 
 export const getRoster = (team) => async dispatch => {
     try {
-        const res = await axios.get(`/teams/${team}/roster`)        
+        const res = await axios.get(`/teamsAPI/${team}/roster`)        
         dispatch({
             type: GET_ROSTER,
             payload: res.data,

@@ -31,7 +31,7 @@ Promise.all(urls.map(url => fetch(url)))
 // @desc    Get all teams
 // @access  Public
 
-router.get(`/teams/${linkTeamName}/roster`, (req, res) => {            
+router.get(`/teamsAPI/${linkTeamName}/roster`, (req, res) => {            
     res.json(result[i+2]);
 
     Roster.find().then(team => {
