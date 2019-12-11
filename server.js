@@ -16,7 +16,6 @@ app.use('/api/users', require('./routes/api/users'));
 app.use('/api/auth', require('./routes/api/auth'));
 app.use('/api/profile', require('./routes/api/profile'));
 
-
 app.use('/teams',  require('./routes/api/teams'));
 app.use('/teams',  require('./routes/api/rosters'));
 app.use('/teams',  require('./routes/api/players'));
