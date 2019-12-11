@@ -32,7 +32,7 @@ app.use(bodyParser.urlencoded({extended: true}));
 // Serve static assets in production
 if(process.env.NODE_ENV === 'production'){
   // Set static folder
-  app.use(express.static(path.join(__dirname, "client", "build")))
+  // app.use(express.static(path.join(__dirname, "client", "build")))
   app.use('/static', express.static(path.join(__dirname, 'public')))
 
   app.get('*', (req, res) => {

@@ -14,7 +14,7 @@ class Home extends Component {
     return(
 
       <div className='home'>
-        <h1 class="title">HOME PAGE UNDER CONSTRUCTION</h1>
+        <h1 className="title">HOME PAGE UNDER CONSTRUCTION</h1>
       </div>
 
     )
