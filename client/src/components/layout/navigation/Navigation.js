@@ -47,7 +47,7 @@ class NavigationBar extends Component {
             </DropdownToggle>
             <DropdownMenu right className="dropdown-ul">    
               <DropdownItem>
-                <Link to="/teams">
+                <Link to="teamsPage">
                   <li className="dropdown-list-item">
                     TEAMS
                   </li>
@@ -72,7 +72,7 @@ class NavigationBar extends Component {
           </DropdownToggle>
           <DropdownMenu right className="dropdown-ul">    
             <DropdownItem>
-              <Link to="/teams">
+              <Link to="/teamsPage">
                 <li className="dropdown-list-item">
                    TEAMS
                 </li>

@@ -20,7 +20,7 @@ import './teamroster.css'
             <Fragment>
                 <Col className="roster-col" xs="12" sm="6" md="4" lg="3" 
                 onClick={ () => getRoster(teamLink) }> 
-                    <Link to={`/teams/${teamLink}/roster/`}>
+                    <Link to={`/teamsPage/${teamLink}/roster/`}>
                         <Card body className="team-card">
                             <CardTitle>{name}</CardTitle>
                         </Card>
