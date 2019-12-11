@@ -1,31 +1,45 @@
-import React, { Fragment} from 'react';
+import React, {Fragment, Component } from 'react'
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 import { Container, Row, Table } from 'reactstrap';
-import { getPlayer } from '../../../actions/stats';
+import { getRoster } from '../../../actions/stats';
 import { Link } from 'react-router-dom';
 import './teamrosterdetails.css';
 
 
+class TeamRosterDetails extends Component {
 
-const TeamRosterDetails = ({stats}) =>{
+    componentDidMount(){
+        let rosterURLArray = window.location.pathname.split('/');
 
-    const { roster = [] } = stats.roster
-
-    let rosterArray = [];
-
-    for(let i = 0; i< roster.length; i++){
-        rosterArray.push(roster[i]);
+        rosterURLArray.pop();
+        rosterURLArray.shift();
+    
+        let team = rosterURLArray[1];
+    
+        const { getRoster } = this.props
+    
+        getRoster(team);
     }
 
-    rosterArray.sort(function(a, b){
-        const lastNameSort1 = a.person.fullName.split(' ')[1]
-        const lastNameSort2 = b.person.fullName.split(' ')[1]
+    render(){
 
-        if(lastNameSort1 < lastNameSort2) { return -1; }
-        if(lastNameSort1 > lastNameSort2) { return 1; }
-        return 0;
-    })
+        const { roster = [] } = this.props.stats.roster
+
+        let rosterArray = [];
+
+        for(let i = 0; i< roster.length; i++){
+            rosterArray.push(roster[i]);
+        }
+
+        rosterArray.sort(function(a, b){
+            const lastNameSort1 = a.person.fullName.split(' ')[1]
+            const lastNameSort2 = b.person.fullName.split(' ')[1]
+
+            if(lastNameSort1 < lastNameSort2) { return -1; }
+            if(lastNameSort1 > lastNameSort2) { return 1; }
+            return 0;
+        })
 
     return(
         <Fragment>
@@ -142,14 +156,15 @@ const TeamRosterDetails = ({stats}) =>{
         </Fragment>
     )
 }
+}
 
 TeamRosterDetails.propTypes = {
     stats: PropTypes.object.isRequired,
-    getPlayer: PropTypes.func.isRequired
+    getRoster: PropTypes.func.isRequired
 }
 
 const mapStateToProps = state => {
     return {stats: state.stats}
 }
 
-export default connect(mapStateToProps, {getPlayer})(TeamRosterDetails);
+export default connect(mapStateToProps, {getRoster})(TeamRosterDetails);
