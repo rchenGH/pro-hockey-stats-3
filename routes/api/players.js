@@ -30,7 +30,7 @@ Promise.all(urls.map(url => fetch(url)))
         if(i === 11 || i === 27 || i > 30 && i < 55) { continue }
         const linkTeamName = result[0].teams[i].teamName.split(' ').join('').toLowerCase();
 
-        router.get(`/${linkTeamName}/roster/players`, (req, res) => {
+        router.get(`/teams/${linkTeamName}/roster/players`, (req, res) => {
             res.json(result[i+2]);
         })
         
@@ -45,7 +45,7 @@ Promise.all(urls.map(url => fetch(url)))
 
         const linkName = name.split(" ").join("").toLowerCase();
         
-        router.get(`/${linkTeamName}/roster/${linkName}`, (req, res) => { 
+        router.get(`/teams/${linkTeamName}/roster/${linkName}`, (req, res) => { 
             fetch(`https://statsapi.web.nhl.com/api/v1/people/${linkPlayerId[index]}?expand=person.stats&stats=yearByYear`)
                 .then(function(res){
                     return res.json().catch(err => console.log(err));

@@ -51,17 +51,17 @@ const App = () => {
                   />
                   <Route 
                     exact 
-                    path='/teamsPage'
+                    path='/teams'
                     component={() => <TeamsIndex />}
                   />
                   <Route 
                     exact 
-                    path='/teamsPage/:team/roster'
+                    path='/teams/:team/roster'
                     component={() => <TeamRosterDetails />}
                   />
                   <Route 
                     exact 
-                    path='/teamsPage/:team/roster/:player'
+                    path='/teams/:team/roster/:player'
                     component={() => <PlayerDetails />}
                   />
                   <Route 

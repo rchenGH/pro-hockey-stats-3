@@ -16,9 +16,9 @@ app.use('/api/users', require('./routes/api/users'));
 app.use('/api/auth', require('./routes/api/auth'));
 app.use('/api/profile', require('./routes/api/profile'));
 
-app.use('/teams',  require('./routes/api/teams'));
-app.use('/teams',  require('./routes/api/rosters'));
-app.use('/teams',  require('./routes/api/players'));
+app.use('/',  require('./routes/api/teams'));
+app.use('/',  require('./routes/api/rosters'));
+app.use('/',  require('./routes/api/players'));
 
 // Connect Database
 connectDB();
@@ -35,6 +35,10 @@ if(process.env.NODE_ENV === 'production'){
   app.use('*', express.static('client/build'))
 
   app.get('*', (req, res) => {
+    res.sendFile(path.join(__dirname, 'client', 'build', 'index.html'));
+  });
+
+  app.get('/teams', (req, res) => {
     res.sendFile(path.join(__dirname, 'client', 'build', 'index.html'));
   });
 }

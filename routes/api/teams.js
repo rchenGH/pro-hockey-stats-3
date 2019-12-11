@@ -16,7 +16,7 @@ function isEmpty(arr) {
     }
 }
 
-router.get('/', (req, res) => {
+router.get('/teams', (req, res) => {
     const getTeams = () => {
             fetch(`https://statsapi.web.nhl.com/api/v1/teams`)
                 .then(function(res) {
