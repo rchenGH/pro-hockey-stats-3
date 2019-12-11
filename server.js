@@ -34,13 +34,9 @@ if(process.env.NODE_ENV === 'production'){
   app.use(express.static(path.join(__dirname, "client", "build")));
   app.use('*', express.static('client/build'))
 
-  app.get('*', (req, res) => {
+  app.get('/teams', (req, res) => {
     res.sendFile(path.join(__dirname, 'client', 'build', 'index.html'));
-
-    if (!url.startsWith('/app/')) // since we're on local windows
-    url = url.substring(1);
-  res.sendFile(url);
-  })
+  });
 }
 
 const port = process.env.PORT || 5000;
