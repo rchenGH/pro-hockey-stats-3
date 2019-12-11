@@ -34,7 +34,7 @@ export const getRoster = (team) => async dispatch => {
 
 export const getTeams = () => async dispatch => {
     try {
-        const res = await axios.get('/teams')
+        const res = await axios.get('/teamsAPI')
 
         dispatch({
             type: GET_TEAMS,

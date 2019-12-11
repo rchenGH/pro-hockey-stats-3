@@ -18,7 +18,6 @@ for(let i = 0; i < 55; i++ ){
     urls.push(`https://statsapi.web.nhl.com/api/v1/teams/${i}/roster`)
 }
 
-
 Promise.all(urls.map(url => fetch(url)))
     .then(res => Promise.all( res.map(r => r.json()) )).catch(err => err)
     .then(result => {
