@@ -8,8 +8,14 @@ import '../player/player.css'
 class PlayerDetails extends Component {
 
     componentDidMount(){
+        let playerURLArray = window.location.pathname.split('/');
+        playerURLArray.shift();
+
+        let team = playerURLArray[1]
+        let player = playerURLArray[3]
+
         const { getPlayer } = this.props
-        getPlayer(window.location.pathname)
+        getPlayer(team, player)
     }
 
     render(){

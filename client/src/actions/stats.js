@@ -1,19 +1,16 @@
 import axios from 'axios';
 import { GET_TEAMS, GET_ROSTER, GET_PLAYER } from './types';
 
-export const getPlayer = (urlPath) => async dispatch => {
+export const getPlayer = (team, player) => async dispatch => {
 
     try {
-        await axios.get(urlPath)
-            .then((res) => {
-                dispatch({
-                    type: GET_PLAYER, 
-                    payload: res.data,
-                })
-            }).catch((err) => {
-                console.log(err)
-            })
-
+        const res = await axios.get(`/teamsAPI/${team}/roster/${player}`)
+        dispatch({
+            type: GET_PLAYER,
+            payload: res.data,
+            team,
+            player
+        })
     } catch (err) {
         console.log(err)
     }
