@@ -33,8 +33,6 @@ const connectDB = async () => {
   }
 }
 
-console.log('in server ', process.env.mongoURI)
-
 connectDB();
 mongoose.set('useCreateIndex', true);
 
