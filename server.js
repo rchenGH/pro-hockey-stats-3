@@ -4,8 +4,8 @@ const bodyParser = require('body-parser');
 const mongoose = require('mongoose');
 const app = express();
 const path = require('path');
-const connectDB = require('./config/db')
 
+require('dotenv').config();
 
 // Init Middleware
 app.use(express.json({extended: false}));
@@ -21,6 +21,20 @@ app.use('/',  require('./routes/api/rosters'));
 app.use('/',  require('./routes/api/players'));
 
 // Connect Database
+
+const connectDB = async () => {
+  try {
+      await mongoose.connect(process.env.mongoURI, {useUnifiedTopology:true, useNewUrlParser: true })
+      console.log('MongoDB Connected...')
+  } catch (err) {
+      console.error(err.message);
+      // Exit process
+      process.exit(1)
+  }
+}
+
+console.log('in server ', process.env.mongoURI)
+
 connectDB();
 mongoose.set('useCreateIndex', true);
 
@@ -41,7 +55,6 @@ if (process.env.NODE_ENV === "production") {
     res.sendFile(path.join(__dirname, "./client/public/index.html"));
   });
 }
-
 
 
 const port = process.env.PORT || 5000;
