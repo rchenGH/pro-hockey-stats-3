@@ -14,7 +14,7 @@ const Roster = require('../../models/Roster');
 const urls = [`https://statsapi.web.nhl.com/api/v1/teams`];
 
 for(let i = 0; i < 55; i++ ){
-    if ( i === 11 || i === 27 || i > 30 && i < 52){ continue }
+    if ( i === 11 || i > 30 && i < 52){ continue }
     urls.push(`https://statsapi.web.nhl.com/api/v1/teams/${i}/roster`)
 }
 
@@ -23,7 +23,7 @@ Promise.all(urls.map(url => fetch(url)))
     .then(result => {
 
     for(let i = 0; i < 55; i++){
-        if(i === 11 || i === 27 || i > 30 && i < 55) { continue }
+        if(i === 11 || i > 30 && i < 55) { continue }
 
         const linkTeamName = result[0].teams[i].teamName.split(' ').join('').toLowerCase();
 
@@ -50,7 +50,7 @@ router.get(`/teamsAPI/${linkTeamName}/roster`, (req, res) => {
 
                             if(roster.roster[i].person.id){ rosterField.id = roster.roster[i].person.id }
                             if(roster.roster[i].person.fullName){ rosterField.fullName = roster.roster[i].person.fullName }
-
+                            
                             new Roster(rosterField).save().catch(err => err)
                         }
                     }

@@ -10,8 +10,8 @@ import './teamroster.css'
  class TeamRoster extends Component{     
 
     render(){
-        const { name, getRoster } = this.props
-        const { loading } = this.props.stats
+        const { name, getRoster } = this.props;
+        const { loading } = this.props.stats;
 
         let teamLink = this.props.teamName.split(' ').join('').toLowerCase();
     
