@@ -2,62 +2,44 @@
 const express = require('express');
 const router = express.Router();
 const fetch = require('node-fetch');
-const isEmpty = require('../../functions/isEmpty')
-
-// Model
-const Roster = require('../../models/Roster');
 
 // @route   GET api/teams/${teamName}/rosters
 // @desc    Get all teams
 // @access  Public
+// https://statsapi.web.nhl.com/api/v1/teams
 
-const urls = [`https://statsapi.web.nhl.com/api/v1/teams`];
+let teamID = [];
+let teamRosterUrls = [];
 
-for(let i = 0; i < 55; i++ ){
-    if ( i === 11 || i > 30 && i < 52){ continue }
-    urls.push(`https://statsapi.web.nhl.com/api/v1/teams/${i}/roster`)
-}
+fetch(`https://statsapi.web.nhl.com/api/v1/teams`)
+    .then(function(res){      
+        return res.json().catch(err => console.log(err))
+    }).then(function(data){
+        for(let i = 0; i < data.teams.length; i++){
+            teamID.push(data.teams[i].id)
+            const linkTeamName = data.teams[i].teamName.split(' ').join('').toLowerCase();
+            teamRosterUrls.push(`https://statsapi.web.nhl.com/api/v1/teams/${teamID[i]}/roster`);
 
-Promise.all(urls.map(url => fetch(url)))
-    .then(res => Promise.all( res.map(r => r.json()) )).catch(err => err)
-    .then(result => {
-
-    for(let i = 0; i < 55; i++){
-        if(i === 11 || i > 30 && i < 55) { continue }
-
-        const linkTeamName = result[0].teams[i].teamName.split(' ').join('').toLowerCase();
-
+            Promise.all(teamRosterUrls.map(url => fetch(url)))
+                .then(res => Promise.all( res.map(r => r.json()) )).catch(err => console.log(err))
+                .then(result => {
+                
 // @route   GET api/teams/(teamname)/roster
 // @desc    Get all teams
 // @access  Public
 
-router.get(`/teamsAPI/${linkTeamName}/roster`, (req, res) => {            
-    res.json(result[i+2]);
+            router.get(`/teamsAPI/${linkTeamName}/roster`, (req, res) => {
+                res.json(result[i])
 
-    Roster.find().then(team => {
-    
-    })
-        fetch(`https://statsapi.web.nhl.com/api/v1/teams/${i}/roster`)
-            .then(function(res) {
-                return res.json().catch(err => console.log(err));
-            }).catch(err => console.log(err))
-            .then(function(roster) {
-                const rosterField = {};
-                Roster.find().then(team => {
-                    if(isEmpty(team)){
+                fetch(`https://statsapi.web.nhl.com/api/v1/teams/${teamID[i]}/roster`)
+                    .then(function(res) {
+                        res.json().catch(err => console.log(err));
+                    }).catch(err => console.log(err))
+            })
+        }).catch(err => console.log(err))
+        }
+    }).catch(err => console.log(err))
 
-                        for(let i = 0; i < roster.roster.length; i++){
 
-                            if(roster.roster[i].person.id){ rosterField.id = roster.roster[i].person.id }
-                            if(roster.roster[i].person.fullName){ rosterField.fullName = roster.roster[i].person.fullName }
-                            
-                            new Roster(rosterField).save().catch(err => err)
-                        }
-                    }
-                }).catch(err => console.log(err))
-            }).catch(err => console.log('error in rosters api ', err));
-        })
-    }
-}).catch(err => console.log(err))
 
 module.exports = router;

@@ -1,4 +1,1 @@
-{
-    "mongoURI": "mongoDB",
-    "jwtSecret": "mysecrettoken"
-}
+{}
