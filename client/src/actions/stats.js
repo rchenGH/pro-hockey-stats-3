@@ -2,7 +2,6 @@ import axios from 'axios';
 import { GET_TEAMS, GET_ROSTER, GET_PLAYER } from './types';
 
 export const getPlayer = (team, player) => async dispatch => {
-
     try {
         const res = await axios.get(`/teamsAPI/${team}/roster/${player}`)
         dispatch({
